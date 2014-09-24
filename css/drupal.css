@@ -1,0 +1,17 @@
+.hidden {
+	display: none;
+}
+
+#name-and-slogan {
+	display: inline-block;
+}
+
+#admin-menu .admin-menu-search input {
+	height: inherit;
+}
+
+#admin-menu-wrapper ul li:before {
+  font-family: inherit;
+  content: none;
+  padding: 0;
+}
