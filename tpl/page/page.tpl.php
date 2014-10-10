@@ -54,6 +54,8 @@
   </div>
 </header>
 
+<?php print render($page['before_content']); ?>
+
 <div class="main_wrapper">
   <?php if ($page['sidebar']): ?><div class="bg_sidebar is_right-sidebar"></div><?php endif; ?>  
   <div class="content_wrapper">
@@ -61,17 +63,21 @@
       <div class="content_block <?php if ($page['sidebar']) { print "right-sidebar"; } else { print "no-sidebar"; } ?>">
         <div class="fl-container <?php if ($page['sidebar']) { print "hasRS"; } ?>">
           <div class="row">
-            <div class="posts-block">
             
-              <?php if ($title): ?>
-              <div class="page_title_block">
-                <h1 class="title"><?php print $title; ?></h1>
-              </div>
-              <?php endif; ?>
+            <?php print $messages; ?>
+            <?php if ($tabs): ?>
+			        <div class="tabs">
+			          <?php print render($tabs); ?>
+			        </div>
+			      <?php endif; ?>
+			      <?php print render($page['help']); ?>
+			      <?php if ($action_links): ?>
+			        <ul class="action-links">
+			          <?php print render($action_links); ?>
+			        </ul>
+			      <?php endif; ?>
+            <?php print render($page['content']); ?>
               
-              <?php print render($page['content']); ?>
-              
-            </div>
           </div>
         </div><!-- .fl-container -->
         <?php if ($page['sidebar']): ?>
@@ -83,6 +89,7 @@
     </div>
   </div>
 </div>          
+<?php if ($page['footer_bottom_left']): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
     <div class="row">
@@ -92,3 +99,4 @@
     </div>
   </div>
 </footer>    
+<?php endif; ?>

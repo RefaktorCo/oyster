@@ -10,8 +10,16 @@
 	height: inherit;
 }
 
-#admin-menu-wrapper ul li:before {
+ul li:before {
   font-family: inherit;
   content: none;
   padding: 0;
+}
+
+.fs_controls a.fs_share {
+	display: none;
+}
+
+.page_title_block .title {
+	text-transform: inherit;
 }

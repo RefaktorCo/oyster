@@ -43,9 +43,21 @@ function oyster_preprocess_html(&$vars){
    '#weight' => 3,
  );
  
+ $font_awesome = array(
+    '#tag' => 'link', 
+    '#attributes' => array( 
+      'href' => '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 
+      'rel' => 'stylesheet',
+      'type' => 'text/css',
+      'media' => 'screen',
+    ),
+    '#weight' => 4,
+  );
+ 
  drupal_add_html_head( $viewport, 'viewport');
  drupal_add_html_head( $ptsans, 'ptsans');
  drupal_add_html_head( $roboto, 'roboto');
+ drupal_add_html_head( $font_awesome, 'fontawesome');
 
 }
 
@@ -177,4 +189,61 @@ function oyster_block_view_alter(&$data, $block) {
       }
     endforeach;
   }
+}
+
+/**
+ * Modify theme_field()
+ */
+function oyster_field($variables) {
+  $output = '';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';  
+  }
+  switch ($variables['element']['#field_name']) {
+	  case 'field_tags':
+	    foreach ($variables['items'] as $delta => $item) {
+	      $rendered_tags[] = drupal_render($item);
+	    }
+	    $output .= implode(', ', $rendered_tags);
+	  break;
+	  case 'field_project_categories':
+	    foreach ($variables['items'] as $delta => $item) {
+	      $rendered_tags[] = drupal_render($item);
+	    }
+	    $output .= implode(', ', $rendered_tags);
+	  break;  
+	  case 'field_portfolio_skills':	    
+	    foreach ($variables['items'] as $delta => $item) {
+	       $output .= '<span class="preview_skills">' . drupal_render($item) . '</span>';
+	    }
+	  break;
+	  case 'field_image':
+	    if ($variables['element']['#bundle'] =='article') {
+		    foreach ($variables['items'] as $delta => $item) {
+		       $output .= '<div class="item">' . drupal_render($item) . '</div>';
+		    }
+	    }
+	  break;
+	  case 'field_image':
+	    if ($variables['element']['#bundle'] =='portfolio') {
+		    foreach ($variables['items'] as $delta => $item) {
+		       $output .=  drupal_render($item);
+		    }
+	    }
+	  break;
+	  default:
+	    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+	    // Default rendering taken from theme_field().
+	    foreach ($variables['items'] as $delta => $item) {
+	      $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+	      $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+	    }
+	    $output .= '</div>';
+	    // Render the top-level DIV.
+	    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+	  break;
+  }
+   
+  return $output;
 }
