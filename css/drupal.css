@@ -45,3 +45,11 @@ ul li:before {
 .comment-form input[type="submit"] {
 	margin-right: 10px;
 }
+
+.nivoSlider img {
+	height: inherit;
+}
+
+.portfolio-gallery {
+	margin: 20px 0px;
+}

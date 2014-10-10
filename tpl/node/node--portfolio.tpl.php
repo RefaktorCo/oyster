@@ -34,7 +34,9 @@
           <span class="box_day"><?php print format_date($node->created, 'custom', 'd'); ?></span>
         </div>                                            
         <div class="listing_meta">
-          <span>in <a href="javascript:void(0)">Portrait</a></span>
+          <?php if ($content['field_portfolio_category']): ?>
+            <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
+          <?php endif; ?>  
           <span><a href="<?php print $node_url;?>/#comments"><?php print $comment_count; ?> <?php print t('Comment'); ?><?php if ($comment_count != "1" ) { echo "s"; } ?></a></span>
           <?php if (render($content['field_portfolio_skills'])) { print render($content['field_portfolio_skills']); } ?>
         </div>   
@@ -46,12 +48,13 @@
     </div><!--.blog_post_page -->      
     
     <article class="contentarea sp_contentarea">
+    
 	    <?php if ($content['field_portfolio_introduction']) { print render($content['field_portfolio_introduction']); } ?>
 	    
-	    
+      <?php if ($content['field_portfolio_gallery']) { print portfolio_gallery($node); } ?>
+	
 	    <?php
-	      // We hide the comments and links now so that we can render them later.
-	      
+	      // Hide all other fields and render $content.
 	      hide($content['field_image']);
 	      hide($content['field_tags']);
 	      hide($content['field_portfolio_skills']);

@@ -207,7 +207,7 @@ function oyster_field($variables) {
 	    }
 	    $output .= implode(', ', $rendered_tags);
 	  break;
-	  case 'field_project_categories':
+	  case 'field_portfolio_category':
 	    foreach ($variables['items'] as $delta => $item) {
 	      $rendered_tags[] = drupal_render($item);
 	    }

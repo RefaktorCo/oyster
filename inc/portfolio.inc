@@ -1,5 +1,28 @@
 <?php
 
+function portfolio_gallery($node) {
+  $output = '';
+  $output .= '<div class="row portfolio-gallery"><div class="span12"><div class="list-of-images images_in_a_row_3">';
+	foreach ($node->field_portfolio_gallery['und'] as $item) {
+		dpm($item);
+		$output .= '
+		  <div class="gallery_item">
+		    <div class="gallery_item_padding">
+          <div class="gallery_item_wrapper">
+            <a href="'.file_create_url($item['uri']).'" class="prettyPhoto" data-rel="prettyPhoto[gallery1]" title="Portfolio Gallery">
+						  <img class="gallery-stand-img" src="'.file_create_url($item['uri']).'" alt="Portfolio Gallery" width="570" height="401">
+						  <span class="gallery_fadder"></span>
+						  <span class="gallery_ico"><i class="stand_icon icon-eye"></i></span>
+						</a>
+          </div>
+        </div>  
+		  </div>
+		';
+	}
+	$output .= '</div></div></div>';
+	return $output;
+}
+
 function portfolio_related_works($nid){
   global $base_url;
   $query = new EntityFieldQuery();
