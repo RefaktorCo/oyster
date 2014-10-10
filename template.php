@@ -247,3 +247,35 @@ function oyster_field($variables) {
    
   return $output;
 }
+
+/**
+ * Theme node pagination function().
+ */
+function oyster_node_pagination($node, $mode = 'n') {
+  $query = new EntityFieldQuery();
+	$query
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('status', 1)
+    ->entityCondition('bundle', $node->type);
+  $result = $query->execute();
+  $nids = array_keys($result['node']);
+  
+  while ($node->nid != current($nids)) {
+    next($nids);
+  }
+  
+  switch($mode) {
+    case 'p':
+      prev($nids);
+    break;
+		
+    case 'n':
+      next($nids);
+    break;
+		
+    default:
+    return NULL;
+  }
+  
+  return current($nids);
+}

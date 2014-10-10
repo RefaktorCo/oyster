@@ -23,3 +23,25 @@ ul li:before {
 .page_title_block .title {
 	text-transform: inherit;
 }
+
+.commentlist:before {
+  content: none;
+}
+
+#comment-wrapper {
+	border-left: 1px solid #e0e0e0;
+}
+
+.indented {
+  margin-left: 54px;
+  border-left: 1px solid #e0e0e0;
+  padding: 20px 0px;
+}
+
+.commentlist {
+	overflow: inherit;
+}
+
+.comment-form input[type="submit"] {
+	margin-right: 10px;
+}

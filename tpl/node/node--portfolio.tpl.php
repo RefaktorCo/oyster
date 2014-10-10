@@ -1,71 +1,16 @@
-<?php
-
-function portfolio_related_works($nid){
-  global $base_url;
-  $query = new EntityFieldQuery();
-	$query
-    ->entityCondition('entity_type', 'node')
-    ->propertyCondition('status', 1)
-    ->entityCondition('bundle', 'portfolio');
-  $results = $query->execute();
-  $output = '';
-  $output .= '<div class="row"><div class="span12 single_feature">';
-  $output .= '<div class="bg_title"><h3>'.t('Related Works').'</h3></div>';
-  $output .= ' <div class="featured_items"><div class="items3 featured_portfolio"><ul class="item_list">';
-  foreach ($results['node'] as $result) {
-    if ($result->nid != $nid) {
-      $item = node_load($result->nid);
-      dpm($item);
-	   
-	    // If file does not exist in image style folder, create it.
-			if (!file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
-			  image_style_create_derivative(image_style_load('portfolio_related_works'), $item->field_image['und'][0]['uri'], image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']));
-			}
-			
-	    $output .= '
-	    <li>
-	      <div class="item">
-	        <div class="item_wrapper">
-						<div class="img_block wrapped_img">
-							<a class="featured_ico_link" href="'.$base_url.'/node/'.$item->vid.'">
-								<img src="'.file_create_url(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri'])).'">
-								<div class="featured_item_fadder"></div>
-								<span class="gallery_ico"><i class="stand_icon icon-eye"></i></span>
-							</a>
-						</div>
-						
-						<div class="featured_items_body">
-							<div class="featured_items_title">
-								<h6><a href="'.$base_url.'/node/'.$item->vid.'">'.$item->title.'</a></h6>
-							</div>
-							<div class="featured_item_content">
-								'.substr($item->body['und'][0]['value'], 0, 75).'.... 
-								<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">Read more</a>
-								<div class="featured_items_meta">
-									<div class="preview_categ">in Stuff</div>
-									<div class="gallery_likes gallery_likes_add ">
-										<i class="stand_icon icon-heart-o"></i>
-										<span>35</span>
-									</div>											
-								</div>
-							</div>	
-					  </div>
-				  </div>
-			  </div>
-			</li>			
-			';
-	  }
-  }
-  $output .= '</ul></div></div></div></div><hr class="single_hr">';
-  
-  return $output;
-}
+<?php 
+  // Initialize oAuth helper functions.
+  require_once(drupal_get_path('theme', 'oyster').'/inc/portfolio.inc');
 ?>
 
-<div class="span12 module_cont module_blog module_none_padding module_blog_page">
+<div class="span12 module_blog module_none_padding module_blog_page">
   <div class="prev_next_links">
-      <div class="fleft"><a href="javascript:void(0)"><?php print t('Previous Post'); ?></a></div>
-      <div class="fright"><a href="javascript:void(0)"><?php print t('Next Post'); ?></a></div>
+      <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>
+        <div class="fleft"><a href="<?php print url('node/' . oyster_node_pagination($node, 'p'), array('absolute' => TRUE)); ?>"><?php print t('Previous Post'); ?></a></div>
+      <?php endif; ?>
+      <?php if (oyster_node_pagination($node, 'n') != NULL) : ?>
+        <div class="fright"><a href="<?php print url('node/' . oyster_node_pagination($node, 'n'), array('absolute' => TRUE)); ?>"><?php print t('Next Post'); ?></a></div>
+      <?php endif; ?>
   </div>
   <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
@@ -91,7 +36,7 @@ function portfolio_related_works($nid){
         <div class="listing_meta">
           <span>in <a href="javascript:void(0)">Portrait</a></span>
           <span><a href="<?php print $node_url;?>/#comments"><?php print $comment_count; ?> <?php print t('Comment'); ?><?php if ($comment_count != "1" ) { echo "s"; } ?></a></span>
-          <?php if ($content['field_portfolio_skills']) { print render($content['field_portfolio_skills']); } ?>
+          <?php if (render($content['field_portfolio_skills'])) { print render($content['field_portfolio_skills']); } ?>
         </div>   
         <?php if ($display_submitted): ?>                                     
           <div class="author_ava"><?php print $user_picture; ?></div>
@@ -113,6 +58,7 @@ function portfolio_related_works($nid){
 	      hide($content['field_portfolio_gallery']);
 	      hide($content['field_media_embed']);
 	      hide($content['field_portfolio_introduction']);
+	      hide($content['field_portfolio_category']);
 	      hide($content['comments']);
 	      hide($content['links']);
 	      print render($content);
