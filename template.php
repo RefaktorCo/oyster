@@ -232,6 +232,11 @@ function oyster_field($variables) {
 		    }
 	    }
 	  break;
+	   case 'field_media_embed':
+	     foreach ($variables['items'] as $delta => $item) {
+		     $output .=  drupal_render($item);
+	     }
+	  break;
 	  default:
 	    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
 	    // Default rendering taken from theme_field().

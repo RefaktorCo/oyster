@@ -53,3 +53,11 @@ ul li:before {
 .portfolio-gallery {
 	margin: 20px 0px;
 }
+
+.fullwidth {
+	padding: 0px;
+}
+
+.fullwidth .main-container {
+	width: 100%;
+}

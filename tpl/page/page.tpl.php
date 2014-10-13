@@ -59,7 +59,7 @@
 <div class="main_wrapper">
   <?php if ($page['sidebar']): ?><div class="bg_sidebar is_right-sidebar"></div><?php endif; ?>  
   <div class="content_wrapper">
-    <div class="container">
+    <div class="container main-container">
       <div class="content_block <?php if ($page['sidebar']) { print "right-sidebar"; } else { print "no-sidebar"; } ?>">
         <div class="fl-container <?php if ($page['sidebar']) { print "hasRS"; } ?>">
           <div class="row">

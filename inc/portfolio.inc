@@ -4,7 +4,6 @@ function portfolio_gallery($node) {
   $output = '';
   $output .= '<div class="row portfolio-gallery"><div class="span12"><div class="list-of-images images_in_a_row_3">';
 	foreach ($node->field_portfolio_gallery['und'] as $item) {
-		dpm($item);
 		$output .= '
 		  <div class="gallery_item">
 		    <div class="gallery_item_padding">
@@ -24,6 +23,7 @@ function portfolio_gallery($node) {
 }
 
 function portfolio_related_works($nid){
+  $count = '';
   global $base_url;
   $query = new EntityFieldQuery();
 	$query
@@ -36,9 +36,17 @@ function portfolio_related_works($nid){
   $output .= '<div class="bg_title"><h3>'.t('Related Works').'</h3></div>';
   $output .= ' <div class="featured_items"><div class="items3 featured_portfolio"><ul class="item_list">';
   foreach ($results['node'] as $result) {
-    if ($result->nid != $nid) {
+    if ($result->nid != $nid && $count != '3') {
       // Load those nodes.
       $item = node_load($result->nid);
+      
+      if (isset($item->body['und'])) {
+	      $body = substr($item->body['und'][0]['value'], 0, 75) .'<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">'.t('Read more').'</a>';
+      }
+      else {
+	      $body = '';
+      }
+      
       // Get the portfolio item taxonomy terms.
       $taxonomy = array();
       foreach ($item->field_portfolio_category['und'] as $term) {
@@ -67,8 +75,8 @@ function portfolio_related_works($nid){
 								<h6><a href="'.$base_url.'/node/'.$item->vid.'">'.$item->title.'</a></h6>
 							</div>
 							<div class="featured_item_content">
-								'.substr($item->body['und'][0]['value'], 0, 75).'.... 
-								<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">'.t('Read more').'</a>
+								'.$body.'
+								
 								<div class="featured_items_meta">
 									<div class="preview_categ">'.t('in').' '.$terms.'</div>
 									<div class="gallery_likes gallery_likes_add ">
@@ -82,7 +90,9 @@ function portfolio_related_works($nid){
 			  </div>
 			</li>			
 			';
+			
 	  }
+	  $count ++;
   }
   $output .= '</ul></div></div></div></div><hr class="single_hr">';
   
