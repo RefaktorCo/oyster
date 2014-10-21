@@ -25,7 +25,9 @@
 		    </div>
 		    <?php endif; ?>
 		    
-		    <?php if (isset($content['field_media_embed'])) { print render($content['field_media_embed']); } ?>
+		    <?php if (render($content['field_media_embed'])): ?>
+	        <div class="pf_output_container"><?php print render($content['field_media_embed']);?></div>
+	      <?php endif; ?>
 		    
 		  </div>   
 		  <div class="blogpreview_top">
@@ -44,7 +46,9 @@
           <div class="author_ava"><?php print $user_picture; ?></div>
         <?php endif; ?>
       </div>
-      <h3 class="blogpost_title"><?php print $title; ?></h3>
+      <?php print render($title_prefix); ?>
+      <h3<?php print $title_attributes; ?> class="blogpost_title"><?php print $title; ?></h3>
+      <?php print render($title_suffix); ?>
     </div><!--.blog_post_page -->      
     
     <article class="contentarea sp_contentarea">

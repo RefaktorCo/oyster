@@ -1,0 +1,90 @@
+<?php require_once(drupal_get_path('theme', 'oyster').'/inc/article.inc'); ?>
+  <div class="prev_next_links">
+      <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>
+        <div class="fleft"><a href="<?php print url('node/' . oyster_node_pagination($node, 'p'), array('absolute' => TRUE)); ?>"><?php print t('Previous Post'); ?></a></div>
+      <?php endif; ?>
+      <?php if (oyster_node_pagination($node, 'n') != NULL) : ?>
+        <div class="fright"><a href="<?php print url('node/' . oyster_node_pagination($node, 'n'), array('absolute' => TRUE)); ?>"><?php print t('Next Post'); ?></a></div>
+      <?php endif; ?>
+  </div>
+
+	<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+	
+	  <div class="blog_post_page">
+	  
+	    <?php if (count(field_get_items('node', $node, 'field_image')) == 1 && !isset($content['field_media_embed'])): ?>                                                                 
+	      <?php print render($content['field_image']); ?>
+	    <?php endif; ?>
+	    
+	    <?php if (count(field_get_items('node', $node, 'field_image')) > 1 && !isset($content['field_media_embed'])): ?>     
+	                                              	
+	    <div class="slider-wrapper theme-default ">
+	      <div class="nivoSlider">                                                
+	        <?php print render($content['field_image']); ?>
+	      </div>
+	    </div>
+	    <?php endif; ?>
+	    
+	    <?php if (render($content['field_media_embed'])): ?>
+	      <div class="pf_output_container"><?php print render($content['field_media_embed']);?></div>
+	    <?php endif; ?>
+	    
+	    <div class="blogpreview_top">
+        <div class="box_date">
+          <span class="box_month"><?php print format_date($node->created, 'custom', 'M'); ?></span>
+          <span class="box_day"><?php print format_date($node->created, 'custom', 'd'); ?></span>
+        </div>                                            
+        <div class="listing_meta">
+          <?php if ($content['field_article_category']): ?>
+            <span><?php print t('in'); ?> <?php print render($content['field_article_category']); ?></span>
+          <?php endif; ?>  
+          <span><a href="<?php print $node_url;?>/#comments"><?php print $comment_count; ?> <?php print t('Comment'); ?><?php if ($comment_count != "1" ) { echo "s"; } ?></a></span>
+          <?php if (render($content['field_tags'])): ?><span><?php print t('tags: '); print render($content['field_tags']); ?></span><?php endif;?>
+        </div>   
+        <?php if ($display_submitted): ?>                                     
+          <div class="author_ava"><?php print $user_picture; ?></div>
+        <?php endif; ?>
+      </div>
+      <?php print render($title_prefix); ?>
+      <h3<?php print $title_attributes; ?> class="blogpost_title"><?php print $title; ?></h3>
+      <?php print render($title_suffix); ?>
+		
+		  <article class="contentarea clearfix"<?php print $content_attributes; ?>>
+		    <?php
+		      // We hide the comments and links now so that we can render them later.
+		      hide($content['comments']);
+		      hide($content['links']);
+		      hide($content['field_like']);
+		      print render($content);
+		    ?>
+		  </article>
+
+			<div class="blog_post-footer">
+		    <div class="blogpost_share">
+		        <span>Share this:</span>
+		        <a href="javascript:void(0);" class="share_facebook"><i class="stand_icon icon-facebook-square"></i></a>
+		        <a href="javascript:void(0);" class="share_pinterest"><i class="stand_icon icon-pinterest"></i></a>
+		        <a href="javascript:void(0);" class="share_tweet"><i class="stand_icon icon-twitter"></i></a>                                                        <a href="javascript:void(0);" class="share_gplus"><i class="icon-google-plus-square"></i></a>
+		        <div class="clear"></div>
+		    </div>
+		    
+		    <?php if (render($content['field_like'])): ?><div class="block_likes"><?php print render($content['field_like']); ?></div><?php endif; ?>	    
+		    <div class="clear"></div>
+	    </div>
+	  </div> 
+	  
+	  <div class="blogpost_user_meta">
+			<div class="author-ava"><?php print $user_picture; ?></div>
+			<div class="author-name"><h6><?php print t('About the Author:'); ?> <?php print $name; ?></h6></div>
+			<?php if (isset(user_load($uid)->field_author_info)): ?>
+			<div class="author-description"><?php print user_load($uid)->field_author_info['und'][0]['value']; ?></div>
+			<?php endif; ?>
+			<div class="clear"></div>
+    </div> 
+     <hr class="single_hr">          
+  
+    <?php print article_related_works($nid); ?>
+    
+		<?php print render($content['comments']); ?>
+	 
+	</div>

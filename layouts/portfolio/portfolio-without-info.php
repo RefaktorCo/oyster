@@ -17,20 +17,27 @@
       	  </ul>
         </div>
         <?php endif; ?>
+        <?php if (isset($content['field_media_embed'])): ?>
+        
         <div class="ribbon_list_wrapper">
-      <div class="fw_video_block">
-    <?php if (isset($content['field_media_embed'])) { print render($content['field_media_embed']); } ?>
-    </div>   
+          <div class="fw_video_block">
+            <?php print render($content['field_media_embed']); ?>
+          </div>   
         </div>
+        <?php endif; ?>
     </div>
    
     
     <div class="slider_info fw_slider_info">
-    
+      
+      
       <div class="slider_data">
+        <?php if (isset($content['field_image']) && !isset($content['field_media_embed'])): ?>
         <a href="javascript:void(0)" class="ltl_prev"><i class="icon-angle-left"></i></a><span class="num_current">1</span> <?php print t('of'); ?> <span class="num_all"></span><a href="javascript:void(0)" class="ltl_next"><i class="icon-angle-right"></i></a>
+        <?php endif; ?>
         <h6 class="post_title"><?php print $title; ?></h6>
       </div>
+      
       
       <div class="slider_share">
         <div class="blogpost_share">

@@ -16,7 +16,9 @@
   <div id="comment-wrapper">
     <?php print render($content['comments']); ?>
   </div>
+  <?php if ($node->comment_count != 0): ?>
   <hr class="comment_hr">
+  <?php endif; ?>
 
   <?php if ($content['comment_form']): ?>
   <div class="post-block post-leave-comment">

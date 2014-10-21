@@ -1,8 +1,6 @@
 <?php 
-  // Initialize oAuth helper functions.
   require_once(drupal_get_path('theme', 'oyster').'/inc/portfolio.inc');
-  
-  
+ 
   if (!$teaser) {
     switch ($node->field_portfolio_layout['und'][0]['value']) {
       case 'simple':
@@ -23,4 +21,3 @@
     }
   }
 ?>
-

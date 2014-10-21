@@ -198,7 +198,7 @@ function oyster_field($variables) {
   $output = '';
   // Render the label, if it's not hidden.
   if (!$variables['label_hidden']) {
-    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';  
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
   }
   switch ($variables['element']['#field_name']) {
 	  case 'field_tags':
@@ -208,6 +208,7 @@ function oyster_field($variables) {
 	    $output .= implode(', ', $rendered_tags);
 	  break;
 	  case 'field_portfolio_category':
+	  case 'field_article_category':
 	    foreach ($variables['items'] as $delta => $item) {
 	      $rendered_tags[] = drupal_render($item);
 	    }
@@ -238,15 +239,16 @@ function oyster_field($variables) {
 	     }
 	  break;
 	  default:
-	    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
-	    // Default rendering taken from theme_field().
-	    foreach ($variables['items'] as $delta => $item) {
-	      $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
-	      $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
-	    }
-	    $output .= '</div>';
-	    // Render the top-level DIV.
-	    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+	    // Render the items.
+		  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+		  foreach ($variables['items'] as $delta => $item) {
+		    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+		    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+		  }
+		  $output .= '</div>';
+		
+		  // Render the top-level DIV.
+		  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
 	  break;
   }
    

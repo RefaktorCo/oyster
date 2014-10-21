@@ -64,7 +64,12 @@
         <div class="fl-container <?php if ($page['sidebar']) { print "hasRS"; } ?>">
           <div class="row">
             
-            <?php print $messages; ?>
+            <?php if ($messages): ?>
+					    <div id="messages"><div class="section clearfix">
+					      <?php print $messages; ?>
+					    </div></div> <!-- /.section, /#messages -->
+					  <?php endif; ?>
+            
             <?php if ($tabs): ?>
 			        <div class="tabs">
 			          <?php print render($tabs); ?>
@@ -76,7 +81,9 @@
 			          <?php print render($action_links); ?>
 			        </ul>
 			      <?php endif; ?>
-            <?php print render($page['content']); ?>
+			      <div id="content">
+              <?php print render($page['content']); ?>
+			      </div>
               
           </div>
         </div><!-- .fl-container -->
