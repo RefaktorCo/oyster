@@ -67,6 +67,7 @@
 	      hide($content['field_portfolio_introduction']);
 	      hide($content['field_portfolio_category']);
 	      hide($content['field_portfolio_layout']);
+	      hide($content['field_like']);
 	      hide($content['comments']);
 	      hide($content['links']);
 	      print render($content);
@@ -83,14 +84,15 @@
 		    <a href="javascript:void(0)" class="share_gplus"><i class="icon-google-plus-square"></i></a>
 		    <div class="clear"></div>
 		  </div>
-  
+     
+      <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 		  <div class="block_likes">
-		    <div class="post-views"><i class="stand_icon icon-eye"></i> <span>5458</span></div>
-		    <div class="gallery_likes gallery_likes_add ">
-		      <i class="stand_icon icon-heart-o"></i>
-		      <span>45</span>
-		    </div>																				
+		    <?php if (module_exists('statistics')): ?>
+		    <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php print statistics_get($nid)['totalcount'] +1; ?></span></div>
+		    <?php endif; ?>
+		    <?php if (render($content['field_like'])): ?><?php print render($content['field_like']); ?><?php endif; ?>																			
 		  </div>
+		  <?php endif; ?>
 		  
 		  <div class="clear"></div>
 		</div> 

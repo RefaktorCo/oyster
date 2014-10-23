@@ -24,6 +24,9 @@ function oyster_process_page(&$variables) {
   if ($variables['disable_site_slogan']) {
     $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
   }
+  
+  // Add preloader JS to footer.
+  drupal_add_js(drupal_get_path('theme', 'oyster').'/js/preloader.js', array('type' => 'file', 'scope' => 'footer'));
 }	
 
 /**

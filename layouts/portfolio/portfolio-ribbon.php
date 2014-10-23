@@ -68,7 +68,7 @@
     </div>
   </div>
 </div>   
-
+<div class="preloader"></div>
 <script type="text/javascript">        
 jQuery(document).ready(function($){
 	"use strict";

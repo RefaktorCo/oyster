@@ -53,7 +53,6 @@
   
   </div>
 </header>
-<div class="preloader"></div>    
 <?php print render($page['before_content']); ?>
 
 <div class="main_wrapper">
@@ -105,22 +104,6 @@
     </div>
   </div>
 </div>    
-<script>
-
-  "use strict";	
-  
- var   preloader_block = jQuery('.preloader');
-jQuery(document).ready(function($){  
-  if (jQuery('.preloader').size() > 0) {
-        setTimeout("preloader_block.addClass('la-animate');", 500);
-        setTimeout("preloader_block.addClass('load_done')", 2500);
-        setTimeout("preloader_block.remove()", 2950);
-    }
-  
- });
-
-</script> 
- 
 
 <?php if ($page['footer_bottom_left']): ?>          
 <footer><!-- .main-wrapper -->
@@ -133,4 +116,3 @@ jQuery(document).ready(function($){
   </div>
 </footer>    
 <?php endif; ?>
-

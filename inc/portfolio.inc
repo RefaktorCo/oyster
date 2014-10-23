@@ -36,27 +36,42 @@ function portfolio_related_works($nid){
   $output .= '<div class="bg_title"><h3>'.t('Related Works').'</h3></div>';
   $output .= ' <div class="featured_items"><div class="items3 featured_portfolio"><ul class="item_list">';
   foreach ($results['node'] as $result) {
-    if ($result->nid != $nid && $count != '3') {
+    if ($count == 4) {
+	    break;
+    }
+    
+    if ($result->nid != $nid) {
       // Load those nodes.
       $item = node_load($result->nid);
       
       if (isset($item->body['und'])) {
-	      $body = substr($item->body['und'][0]['value'], 0, 75) .'<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">'.t('Read more').'</a>';
+	      $body = substr($item->body['und'][0]['value'], 0, 75) .'<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">'.t(' Read more').'</a>';
       }
       else {
 	      $body = '';
       }
       
+      // Set the $like variable.
+      $like = '';
+      if (isset($item->field_like['und'])) {
+        $like = field_view_field('node', $item, 'field_like');
+        $like = drupal_render($like);
+      }
+
       // Get the portfolio item taxonomy terms.
       $taxonomy = array();
       foreach ($item->field_portfolio_category['und'] as $term) {
 	      $taxonomy[] = taxonomy_term_load($term['tid'])->name;
       }
       $terms = implode(', ', $taxonomy);
+      
 	    // If image file does not exist in image style folder, create it.
-			if (!file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
+			if (isset($item->field_image['und']) && !file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
 			  image_style_create_derivative(image_style_load('portfolio_related_works'), $item->field_image['und'][0]['uri'], image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']));
 			}
+			
+			isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri'])).'">' : $image = '' ;
+			
 			// Start markup output.
 	    $output .= '
 	    <li>
@@ -64,7 +79,7 @@ function portfolio_related_works($nid){
 	        <div class="item_wrapper">
 						<div class="img_block wrapped_img">
 							<a class="featured_ico_link" href="'.$base_url.'/node/'.$item->vid.'">
-								<img src="'.file_create_url(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri'])).'">
+								'.$image.'
 								<div class="featured_item_fadder"></div>
 								<span class="gallery_ico"><i class="stand_icon icon-eye"></i></span>
 							</a>
@@ -80,8 +95,7 @@ function portfolio_related_works($nid){
 								<div class="featured_items_meta">
 									<div class="preview_categ">'.t('in').' '.$terms.'</div>
 									<div class="gallery_likes gallery_likes_add ">
-										<i class="stand_icon icon-heart-o"></i>
-										<span>35</span>
+										'.$like.'
 									</div>											
 								</div>
 							</div>	
@@ -95,6 +109,6 @@ function portfolio_related_works($nid){
 	  $count ++;
   }
   $output .= '</ul></div></div></div></div><hr class="single_hr">';
-  
   return $output;
+  
 }
