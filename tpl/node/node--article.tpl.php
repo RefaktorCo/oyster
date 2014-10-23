@@ -1,4 +1,14 @@
-<?php require_once(drupal_get_path('theme', 'oyster').'/inc/article.inc'); ?>
+<?php 
+  global $base_url;
+  require_once(drupal_get_path('theme', 'oyster').'/inc/article.inc'); 
+	
+	if (render($content['field_image'])) {
+		$share_image = file_create_url($node->field_image['und'][0]['uri']);
+	} else{
+		$share_image = NULL;
+	}
+
+?>
   
   <?php if (!$teaser): ?>
   <div class="prev_next_links">
@@ -15,11 +25,11 @@
 	
 	  <div class="blog_post_page <?php if ($teaser) { print 'blog_teaser'; } ?>">
 	  
-	    <?php if (count(field_get_items('node', $node, 'field_image')) == 1 && !isset($content['field_media_embed'])): ?>                                                                 
+	    <?php if (render($content['field_image']) && count(field_get_items('node', $node, 'field_image')) == 1 && !isset($content['field_media_embed'])): ?>                                                                 
 	      <?php print render($content['field_image']); ?>
 	    <?php endif; ?>
 	    
-	    <?php if (count(field_get_items('node', $node, 'field_image')) > 1 && !isset($content['field_media_embed'])): ?>     
+	    <?php if (render($content['field_image']) && count(field_get_items('node', $node, 'field_image')) > 1 && !isset($content['field_media_embed'])): ?>     
 	                                              	
 	    <div class="slider-wrapper theme-default ">
 	      <div class="nivoSlider">                                                
@@ -64,15 +74,8 @@
 		  </article>
 
 			<div class="blog_post-footer">
-			  <?php if (!$teaser): ?>
-		    <div class="blogpost_share">
-		        <span>Share this:</span>
-		        <a href="javascript:void(0);" class="share_facebook"><i class="stand_icon icon-facebook-square"></i></a>
-		        <a href="javascript:void(0);" class="share_pinterest"><i class="stand_icon icon-pinterest"></i></a>
-		        <a href="javascript:void(0);" class="share_tweet"><i class="stand_icon icon-twitter"></i></a>                                                        <a href="javascript:void(0);" class="share_gplus"><i class="icon-google-plus-square"></i></a>
-		        <div class="clear"></div>
-		    </div>
-		    <?php endif; ?>
+			  
+		    <?php if (!$teaser && module_exists('oyster_utilities')) { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
 		    
 		    <?php if ($teaser): ?>
 		    <a href="<?php print $node_url; ?>" class="shortcode_button btn_small btn_type5 reamdore"><?php print t('Read More'); ?></a>
