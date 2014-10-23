@@ -8,7 +8,7 @@ var header = jQuery('.main_header'),
     window_w = jQuery(window).width(),
     main_wrapper = jQuery('.main_wrapper'),
     site_wrapper = jQuery('.site_wrapper'),
-    preloader_block = jQuery('.preloader'),
+  
     fullscreen_block = jQuery('.fullscreen_block'),
     is_masonry = jQuery('.is_masonry'),
     grid_portfolio_item = jQuery('.grid-portfolio-item'),
@@ -17,11 +17,7 @@ var header = jQuery('.main_header'),
 
 jQuery(document).ready(function ($) {
 	"use strict";
-    if (jQuery('.preloader').size() > 0) {
-        setTimeout("preloader_block.addClass('la-animate');", 500);
-        setTimeout("preloader_block.addClass('load_done')", 2500);
-        setTimeout("preloader_block.remove()", 2950);
-    }
+    
 	if (html.hasClass('sticky_menu') && body.hasClass('admin-bar')) {
 		header.css('top', jQuery('#wpadminbar').height());
 	}

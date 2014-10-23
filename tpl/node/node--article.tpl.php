@@ -1,16 +1,19 @@
 <?php require_once(drupal_get_path('theme', 'oyster').'/inc/article.inc'); ?>
+  
+  <?php if (!$teaser): ?>
   <div class="prev_next_links">
-      <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>
-        <div class="fleft"><a href="<?php print url('node/' . oyster_node_pagination($node, 'p'), array('absolute' => TRUE)); ?>"><?php print t('Previous Post'); ?></a></div>
-      <?php endif; ?>
-      <?php if (oyster_node_pagination($node, 'n') != NULL) : ?>
-        <div class="fright"><a href="<?php print url('node/' . oyster_node_pagination($node, 'n'), array('absolute' => TRUE)); ?>"><?php print t('Next Post'); ?></a></div>
-      <?php endif; ?>
+    <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>
+      <div class="fleft"><a href="<?php print url('node/' . oyster_node_pagination($node, 'p'), array('absolute' => TRUE)); ?>"><?php print t('Previous Post'); ?></a></div>
+    <?php endif; ?>
+    <?php if (oyster_node_pagination($node, 'n') != NULL) : ?>
+      <div class="fright"><a href="<?php print url('node/' . oyster_node_pagination($node, 'n'), array('absolute' => TRUE)); ?>"><?php print t('Next Post'); ?></a></div>
+    <?php endif; ?>
   </div>
-
+  <?php endif; ?>
+  
 	<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 	
-	  <div class="blog_post_page">
+	  <div class="blog_post_page <?php if ($teaser) { print 'blog_teaser'; } ?>">
 	  
 	    <?php if (count(field_get_items('node', $node, 'field_image')) == 1 && !isset($content['field_media_embed'])): ?>                                                                 
 	      <?php print render($content['field_image']); ?>
@@ -54,12 +57,14 @@
 		      // We hide the comments and links now so that we can render them later.
 		      hide($content['comments']);
 		      hide($content['links']);
+		      hide($content['field_image']);
 		      hide($content['field_like']);
 		      print render($content);
 		    ?>
 		  </article>
 
 			<div class="blog_post-footer">
+			  <?php if (!$teaser): ?>
 		    <div class="blogpost_share">
 		        <span>Share this:</span>
 		        <a href="javascript:void(0);" class="share_facebook"><i class="stand_icon icon-facebook-square"></i></a>
@@ -67,12 +72,21 @@
 		        <a href="javascript:void(0);" class="share_tweet"><i class="stand_icon icon-twitter"></i></a>                                                        <a href="javascript:void(0);" class="share_gplus"><i class="icon-google-plus-square"></i></a>
 		        <div class="clear"></div>
 		    </div>
+		    <?php endif; ?>
 		    
-		    <?php if (render($content['field_like'])): ?><div class="block_likes"><?php print render($content['field_like']); ?></div><?php endif; ?>	    
+		    <?php if ($teaser): ?>
+		    <a href="<?php print $node_url; ?>" class="shortcode_button btn_small btn_type5 reamdore"><?php print t('Read More'); ?></a>
+		    <?php endif; ?>
+		    
+		    <div class="block_likes">
+		      <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php print statistics_get($nid)['totalcount'] +1; ?></span></div>
+		      <?php if (render($content['field_like'])): ?><?php print render($content['field_like']); ?><?php endif; ?>	   
+		    </div> 
 		    <div class="clear"></div>
 	    </div>
 	  </div> 
 	  
+	  <?php if (!$teaser): ?>
 	  <div class="blogpost_user_meta">
 			<div class="author-ava"><?php print $user_picture; ?></div>
 			<div class="author-name"><h6><?php print t('About the Author:'); ?> <?php print $name; ?></h6></div>
@@ -81,9 +95,10 @@
 			<?php endif; ?>
 			<div class="clear"></div>
     </div> 
-     <hr class="single_hr">          
+    <?php endif; ?>
+    <hr class="single_hr">          
   
-    <?php print article_related_works($nid); ?>
+    <?php if (!$teaser) { print article_related_works($nid); } ?>
     
 		<?php print render($content['comments']); ?>
 	 

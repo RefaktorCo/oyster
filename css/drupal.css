@@ -1,4 +1,41 @@
+.sidepanel .sidebar_header {
+	font-size: 13px;
+}
 
+.sticky_menu body {
+	padding-top: 81px !important;
+}
+
+.sticky_menu body.admin-menu {
+	margin-top: 0px !important;
+}
+
+.fw_background.bg_image, .fixed_bg {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+@media only screen and (max-width: 760px) and (min-width: 420px) {
+	.fullwidth {
+	  width: 100%;
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	.fullwidth {
+	  width: 100%;
+	}
+}
+
+
+.blog_teaser {
+  margin-bottom: 39px;
+  border-bottom: #e6e6e6 1px solid;
+}
+
+.oyster-node-like {
+	margin-left: 10px;
+}
 
 .vote-icon-wrapper {
 	display: inline-block;

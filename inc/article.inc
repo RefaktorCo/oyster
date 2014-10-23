@@ -17,7 +17,7 @@ function article_related_works($nid){
     if ($result->nid != $nid && $count != '3') {
       // Load those nodes.
       $item = node_load($result->nid);
-      dpm($item);
+      
       // If image file does not exist in image style folder, create it.
 			if (isset($item->field_image['und']) && !file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
 			  image_style_create_derivative(image_style_load('portfolio_related_works'), $item->field_image['und'][0]['uri'], image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']));

@@ -1,6 +1,16 @@
 <?php
 
 /**
+*  Implements theme_js_alter().
+*/
+function oyster_js_alter(&$js) {
+ global $user; 
+ if ((theme_get_setting('sticky_header') != '1') || (in_array('administrator', array_values($user->roles)))) {
+   unset($js[drupal_get_path('theme', 'oyster') . '/js/sticky.js']);
+ }
+}
+
+/**
  * Define some variables for use in theme templates.
  */
 function oyster_process_page(&$variables) {	
@@ -21,29 +31,29 @@ function oyster_process_page(&$variables) {
 */
 function oyster_preprocess_html(&$vars){
  
- $viewport = array(
-   '#type' => 'html_tag',
-   '#tag' => 'meta',
-   '#attributes' => array(
-     'name' => 'viewport',
-     'content' =>  'width=device-width, initial-scale=1, maximum-scale=1',
-   ),
-   '#weight' => 1,
- );
+  $viewport = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' =>  'width=device-width, initial-scale=1, maximum-scale=1',
+    ),
+    '#weight' => 1,
+  );
 
- $ptsans = array(
-   '#type' => 'markup',
-   '#markup' => '<link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">',
-   '#weight' => 2,
- );
+  $ptsans = array(
+    '#type' => 'markup',
+    '#markup' => '<link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">',
+    '#weight' => 2,
+  );
  
- $roboto = array(
-   '#type' => 'markup',
-   '#markup' => '<link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,900" rel="stylesheet" type="text/css">',
-   '#weight' => 3,
- );
+  $roboto = array(
+    '#type' => 'markup',
+    '#markup' => '<link href="//fonts.googleapis.com/css?family=Roboto:400,300,500,900" rel="stylesheet" type="text/css">',
+    '#weight' => 3,
+  );
  
- $font_awesome = array(
+  $font_awesome = array(
     '#tag' => 'link', 
     '#attributes' => array( 
       'href' => '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 
@@ -59,6 +69,16 @@ function oyster_preprocess_html(&$vars){
  drupal_add_html_head( $roboto, 'roboto');
  drupal_add_html_head( $font_awesome, 'fontawesome');
 
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function oyster_preprocess_block(&$vars) {
+  if ($vars['elements']['#block']->region == 'right_sidebar') {
+    $vars['classes_array'][] = 'sidepanel';
+    $vars['title_attributes_array']['class'] = 'sidebar_header';
+  }
 }
 
 /**
@@ -234,6 +254,7 @@ function oyster_field($variables) {
 	    }
 	  break;
 	   case 'field_media_embed':
+	   case 'field_oyster_page_video':
 	     foreach ($variables['items'] as $delta => $item) {
 		     $output .=  drupal_render($item);
 	     }

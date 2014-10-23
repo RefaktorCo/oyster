@@ -53,15 +53,15 @@
   
   </div>
 </header>
-
+<div class="preloader"></div>    
 <?php print render($page['before_content']); ?>
 
 <div class="main_wrapper">
-  <?php if ($page['sidebar']): ?><div class="bg_sidebar is_right-sidebar"></div><?php endif; ?>  
+  <?php if ($page['left_sidebar'] || $page['right_sidebar']): ?><div class="bg_sidebar <?php if ($page['left_sidebar']) { print "is_left-sidebar"; }?> <?php if ($page['right_sidebar']) { print "is_right-sidebar";} ?>"></div><?php endif; ?>  
   <div class="content_wrapper">
     <div class="container main-container">
-      <div class="content_block <?php if ($page['sidebar']) { print "right-sidebar"; } else { print "no-sidebar"; } ?>">
-        <div class="fl-container <?php if ($page['sidebar']) { print "hasRS"; } ?>">
+      <div class="content_block row <?php if (!$page['left_sidebar'] && $page['right_sidebar']) { print "right-sidebar"; } if ($page['left_sidebar'] && !$page['right_sidebar']) { print "left-sidebar"; } if (!$page['left_sidebar'] && !$page['right_sidebar']) { print "no-sidebar"; } ?>">
+        <div class="fl-container <?php if ($page['right_sidebar']) { print "hasRS"; } ?>">
           <div class="row">
             
             <?php if ($messages): ?>
@@ -81,21 +81,47 @@
 			          <?php print render($action_links); ?>
 			        </ul>
 			      <?php endif; ?>
-			      <div id="content">
+			      <div id="content" class="posts-block <?php if ($page['left_sidebar']) { print "hasLS"; } ?>">
               <?php print render($page['content']); ?>
 			      </div>
               
-          </div>
-        </div><!-- .fl-container -->
-        <?php if ($page['sidebar']): ?>
+          
+		        <?php if ($page['left_sidebar']): ?>
+		        <div class="left-sidebar-block">
+		          <?php print render($page['left_sidebar']); ?> 
+		        </div>
+		        <?php endif; ?>
+		        
+		      </div>
+        </div><!-- .fl-container -->     
+        
+        <?php if ($page['right_sidebar']): ?>
         <div class="right-sidebar-block">
-          <?php print render($page['sidebar']); ?> 
+          <?php print render($page['right_sidebar']); ?> 
         </div>
         <?php endif; ?>
+        
       </div>
     </div>
   </div>
-</div>          
+</div>    
+<script>
+
+  "use strict";	
+  
+ var   preloader_block = jQuery('.preloader');
+jQuery(document).ready(function($){  
+  if (jQuery('.preloader').size() > 0) {
+        setTimeout("preloader_block.addClass('la-animate');", 500);
+        setTimeout("preloader_block.addClass('load_done')", 2500);
+        setTimeout("preloader_block.remove()", 2950);
+    }
+  
+ });
+
+</script> 
+ 
+
 <?php if ($page['footer_bottom_left']): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
@@ -107,3 +133,4 @@
   </div>
 </footer>    
 <?php endif; ?>
+
