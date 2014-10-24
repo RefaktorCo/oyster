@@ -1,5 +1,3 @@
-
-
 <div class="span12 module_blog module_none_padding module_blog_page">
   <div class="prev_next_links">
       <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>

@@ -1,3 +1,8 @@
+<?php 
+  if (!isset($content['field_media_embed'])) { drupal_add_js(drupal_get_path('theme', 'oyster') .'/js/portfolio/portfolio_without_info_image.js'); } if (isset($content['field_media_embed'])) { drupal_add_js(drupal_get_path('theme', 'oyster') .'/js/portfolio/portfolio_without_info_video.js'); 
+	}
+?>   
+
 <div class="fullscreen-gallery">
   <div class="fs_grid_gallery">	
     
@@ -26,10 +31,8 @@
         </div>
         <?php endif; ?>
     </div>
-   
     
     <div class="slider_info fw_slider_info">
-      
       
       <div class="slider_data">
         <?php if (isset($content['field_image']) && !isset($content['field_media_embed'])): ?>
@@ -74,7 +77,4 @@
       </div>                           
     </div>
   </div>
-</div>   
-
-
-<?php if (!isset($content['field_media_embed'])) { drupal_add_js(drupal_get_path('theme', 'oyster') .'/js/portfolio/portfolio_without_info_image.js'); } if (isset($content['field_media_embed'])) { drupal_add_js(drupal_get_path('theme', 'oyster') .'/js/portfolio/portfolio_without_info_video.js'); } ?>            
+</div>            

@@ -4,12 +4,18 @@ function portfolio_gallery($node) {
   $output = '';
   $output .= '<div class="row portfolio-gallery"><div class="span12"><div class="list-of-images images_in_a_row_3">';
 	foreach ($node->field_portfolio_gallery['und'] as $item) {
+	
+	  // If image file does not exist in image style folder, create it.
+		if (isset($item['uri']) && !file_exists(image_style_path('oyster_portfolio_gallery', $item['uri']))){ 
+		  image_style_create_derivative(image_style_load('oyster_portfolio_gallery'), $item['uri'], image_style_path('oyster_portfolio_gallery', $item['uri']));
+		}
+	  
 		$output .= '
 		  <div class="gallery_item">
 		    <div class="gallery_item_padding">
           <div class="gallery_item_wrapper">
             <a href="'.file_create_url($item['uri']).'" class="prettyPhoto" data-rel="prettyPhoto[gallery1]" title="Portfolio Gallery">
-						  <img class="gallery-stand-img" src="'.file_create_url($item['uri']).'" alt="Portfolio Gallery" width="570" height="401">
+						  <img class="gallery-stand-img" src="'.file_create_url(image_style_path('oyster_portfolio_gallery', $item['uri'])).'" alt="Portfolio Gallery">
 						  <span class="gallery_fadder"></span>
 						  <span class="gallery_ico"><i class="stand_icon icon-eye"></i></span>
 						</a>
@@ -23,7 +29,7 @@ function portfolio_gallery($node) {
 }
 
 function portfolio_related_works($nid){
-  $count = 0;
+  $count = 1;
   global $base_url;
   $query = new EntityFieldQuery();
 	$query
@@ -39,7 +45,6 @@ function portfolio_related_works($nid){
     if ($count == 4) {
 	    break;
     }
-    
     if ($result->nid != $nid) {
       // Load those nodes.
       $item = node_load($result->nid);
@@ -66,11 +71,11 @@ function portfolio_related_works($nid){
       $terms = implode(', ', $taxonomy);
       
 	    // If image file does not exist in image style folder, create it.
-			if (isset($item->field_image['und']) && !file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
-			  image_style_create_derivative(image_style_load('portfolio_related_works'), $item->field_image['und'][0]['uri'], image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']));
+			if (isset($item->field_image['und']) && !file_exists(image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri']))){ 
+			  image_style_create_derivative(image_style_load('oyster_portfolio_gallery'), $item->field_image['und'][0]['uri'], image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri']));
 			}
 			
-			isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri'])).'">' : $image = '' ;
+			isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri'])).'">' : $image = '' ;
 			
 			// Start markup output.
 	    $output .= '
@@ -104,9 +109,9 @@ function portfolio_related_works($nid){
 			  </div>
 			</li>			
 			';
-			
+		$count ++;	
 	  }
-	  $count ++;
+	  
   }
   $output .= '</ul></div></div></div></div><hr class="single_hr">';
   return $output;

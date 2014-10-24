@@ -19,11 +19,11 @@ function article_related_works($nid){
       $item = node_load($result->nid);
       
       // If image file does not exist in image style folder, create it.
-			if (isset($item->field_image['und']) && !file_exists(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']))){ 
-			  image_style_create_derivative(image_style_load('portfolio_related_works'), $item->field_image['und'][0]['uri'], image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri']));
+			if (isset($item->field_image['und']) && !file_exists(image_style_path('oyster_related_works', $item->field_image['und'][0]['uri']))){ 
+			  image_style_create_derivative(image_style_load('oyster_related_works'), $item->field_image['und'][0]['uri'], image_style_path('oyster_related_works', $item->field_image['und'][0]['uri']));
 			}
 			// Assign image to $image if available.
-      isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('portfolio_related_works', $item->field_image['und'][0]['uri'])).'">' : $image = '';
+      isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('oyster_related_works', $item->field_image['und'][0]['uri'])).'">' : $image = '';
       
       if (isset($item->body['und'])) {
 	      $body = substr($item->body['und'][0]['value'], 0, 75) .'<a class="morelink" href="'.$base_url.'/node/'.$item->vid.'">'.t(' Read more').'</a>';
