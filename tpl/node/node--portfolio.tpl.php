@@ -1,4 +1,14 @@
 <?php 
+  
+  // Declare $base_url global.
+  global $base_url;
+  
+	// Set $share_image variable for passing as argument to oyster_social_share.
+	if (isset($content['field_image'])) {
+		$share_image = file_create_url($node->field_image['und'][0]['uri']);
+	} else{
+		$share_image = NULL;
+	}
   require_once(drupal_get_path('theme', 'oyster').'/inc/portfolio.inc');
  
   if (!$teaser && isset($node->field_portfolio_layout['und'])) {

@@ -1,3 +1,5 @@
+
+
 <div class="span12 module_blog module_none_padding module_blog_page">
   <div class="prev_next_links">
       <?php if (oyster_node_pagination($node, 'p') != NULL) : ?>
@@ -28,8 +30,7 @@
 		    <?php if (render($content['field_media_embed'])): ?>
 	        <div class="pf_output_container"><?php print render($content['field_media_embed']);?></div>
 	      <?php endif; ?>
-		    
-		  </div>   
+	 	  </div>   
 		  <div class="blogpreview_top">
         <div class="box_date">
           <span class="box_month"><?php print format_date($node->created, 'custom', 'M'); ?></span>
@@ -76,14 +77,7 @@
     </article>
 	   
 	  <div class="blog_post-footer sp-blog_post-footer ">
-		  <div class="blogpost_share">
-		    <span>Share this:</span>
-		    <a href="javascript:void(0)" class="share_facebook"><i class="stand_icon icon-facebook-square"></i></a>
-		    <a href="javascript:void(0)" class="share_pinterest"><i class="stand_icon icon-pinterest"></i></a>                                                    
-		    <a href="javascript:void(0)" class="share_tweet"><i class="stand_icon icon-twitter"></i></a>                                                       
-		    <a href="javascript:void(0)" class="share_gplus"><i class="icon-google-plus-square"></i></a>
-		    <div class="clear"></div>
-		  </div>
+		  <?php if (!$teaser && module_exists('oyster_utilities')) { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
      
       <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 		  <div class="block_likes">

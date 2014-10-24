@@ -28,24 +28,21 @@
         <h6 class="post_title"><?php print $title; ?></h6>
       </div>
       
+      <?php if (!$teaser && module_exists('oyster_utilities')): ?>
       <div class="slider_share">
-        <div class="blogpost_share">
-          <span>Share this:</span>
-          <a href="javascript:void(0)" class="share_facebook"><i class="stand_icon icon-facebook-square"></i></a>
-          <a href="javascript:void(0)" class="share_pinterest"><i class="stand_icon icon-pinterest"></i></a>                                                            
-          <a href="javascript:void(0)" class="share_tweet"><i class="stand_icon icon-twitter"></i></a>                                                       
-          <a href="javascript:void(0)" class="share_gplus"><i class="icon-google-plus-square"></i></a>
-          <div class="clear"></div>
-        </div>
+        <?php print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); ?>
       </div>
+      <?php endif; ?>
       
-      <div class="block_likes">
-	      <div class="post-views"><i class="stand_icon icon-eye"></i> <span>5801</span></div>                            
-	      <div class="gallery_likes gallery_likes_add ">
-          <i class="stand_icon icon-heart-o"></i>
-          <span>87</span>
-	      </div>											
-      </div>
+      <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
+	    <div class="block_likes">
+	      <?php if (module_exists('statistics')): ?>
+	      <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php print statistics_get($nid)['totalcount'] +1; ?></span></div>
+	      <?php endif; ?>
+	      <?php if (render($content['field_like'])): ?><?php print render($content['field_like']); ?><?php endif; ?>	   
+	    </div> 
+	    <?php endif; ?>
+	    
       <div class="clear"></div>
       <div class="post_meta_data">
         <div class="listing_meta">

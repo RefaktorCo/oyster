@@ -23,7 +23,7 @@ function portfolio_gallery($node) {
 }
 
 function portfolio_related_works($nid){
-  $count = '';
+  $count = 0;
   global $base_url;
   $query = new EntityFieldQuery();
 	$query
