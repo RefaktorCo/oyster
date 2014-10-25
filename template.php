@@ -118,6 +118,35 @@ function oyster_form_alter(&$form, &$form_state, $form_id) {
 } 
 
 /**
+* Implements hook_form_contact_site_form_alter().
+*/
+function oyster_form_contact_site_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  
+	/* Remove field title and add placeholder for "Name" field */
+	$form['name']['#attributes']['placeholder'] = t( 'Name' );
+	$form['name']['#title'] = FALSE;
+	$form['name']['#required'] = TRUE;
+	
+	/* Remove field title and add placeholder for "Mail" field */
+	$form['mail']['#attributes']['placeholder'] = t( 'Email' );
+	$form['mail']['#title'] = FALSE;
+	$form['mail']['#required'] = TRUE;
+  
+  /* Remove field title and add placeholder for "Subject" field */
+	$form['subject']['#attributes']['placeholder'] = t( 'Subject' );
+	$form['subject']['#title'] = FALSE;
+	$form['subject']['#required'] = TRUE;
+	
+	/* Remove field title and add placeholder for "Message" field */
+	$form['message']['#attributes']['placeholder'] = t( 'Message' );
+	$form['message']['#title'] = FALSE;
+	$form['message']['#required'] = TRUE;
+  		
+}
+
+
+/**
  * Add list classes for links in "Header Menu" region.
  */
 function oyster_menu_link__header_menu(array $variables) {

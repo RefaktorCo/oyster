@@ -1,3 +1,42 @@
+.google-maps {
+  position: relative;
+  padding-bottom: 40%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.contact-form {
+	margin-top: 30px;
+}
+
+.contact-form .form-item {
+	margin: 0;
+}
+
+.contact-form .form-item-name {
+	width: 50% !important;
+	float: left;
+  display: inline-block;
+}
+
+.contact-form .form-item-mail {
+	width: 49%;
+  float: right;
+  display: inline-block;
+}
+
+.contact-form .form-required {
+	display: none;
+}
+
 .sidepanel .sidebar_header {
 	font-size: 13px;
 }

@@ -71,11 +71,11 @@ function portfolio_related_works($nid){
       $terms = implode(', ', $taxonomy);
       
 	    // If image file does not exist in image style folder, create it.
-			if (isset($item->field_image['und']) && !file_exists(image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri']))){ 
-			  image_style_create_derivative(image_style_load('oyster_portfolio_gallery'), $item->field_image['und'][0]['uri'], image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri']));
+			if (isset($item->field_image['und']) && !file_exists(image_style_path('oyster_related_works', $item->field_image['und'][0]['uri']))){ 
+			  image_style_create_derivative(image_style_load('oyster_related_works'), $item->field_image['und'][0]['uri'], image_style_path('oyster_related_works', $item->field_image['und'][0]['uri']));
 			}
 			
-			isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('oyster_portfolio_gallery', $item->field_image['und'][0]['uri'])).'">' : $image = '' ;
+			isset($item->field_image['und']) ? $image = '<img src="'.file_create_url(image_style_path('oyster_related_works', $item->field_image['und'][0]['uri'])).'">' : $image = '' ;
 			
 			// Start markup output.
 	    $output .= '
