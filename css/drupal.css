@@ -45,6 +45,12 @@
 	padding-top: 81px !important;
 }
 
+@media only screen and (max-width: 767px) {
+	.sticky_menu body {
+	  padding-top: 1px !important;
+  }
+}
+
 .sticky_menu body.admin-menu {
 	margin-top: 0px !important;
 }
