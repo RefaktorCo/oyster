@@ -13,6 +13,7 @@ stylesheets[all][] = css/drupal.css
 ; Define theme JS libraries.
 scripts[] = js/modules.js
 scripts[] = js/theme.js
+scripts[] = js/jquery.countdown.min.js
 scripts[] = js/sticky.js
 
 ; Define theme block regions.

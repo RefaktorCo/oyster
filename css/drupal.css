@@ -1,3 +1,14 @@
+.without_border .main_wrapper {
+	margin-top: -100px;
+}
+
+@media only screen and (max-width: 767px) {
+	.without_border .main_wrapper {
+	  margin-top: 0px;
+  }
+}
+
+
 .pagerblock li.active a {
 	color: #aaaaaa;
 }

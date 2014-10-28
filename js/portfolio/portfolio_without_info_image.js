@@ -1,3 +1,20 @@
+"use strict";
+	
+	var header = jQuery('.main_header'),
+    html = jQuery('html'),
+    body = jQuery('body'),
+    footer = jQuery('footer'),
+    window_h = jQuery(window).height(),
+    window_w = jQuery(window).width(),
+    main_wrapper = jQuery('.main_wrapper'),
+    site_wrapper = jQuery('.site_wrapper'),
+    setTop = 0,
+    fullscreen_block = jQuery('.fullscreen_block'),
+    is_masonry = jQuery('.is_masonry'),
+    grid_portfolio_item = jQuery('.grid-portfolio-item'),
+    pp_block = jQuery('.pp_block'),
+    head_border = 1;
+
 jQuery(document).ready(function($){
 	"use strict";
 	jQuery('html').addClass('fullscreen_page sticky_menu');

@@ -3,26 +3,23 @@ jQuery(document).ready(function ($) {
 	"use strict";
 	
 	var header = jQuery('.main_header'),
-	    html = jQuery('html'),
-	    body = jQuery('body'),
-	    footer = jQuery('footer'),
-	    window_h = jQuery(window).height(),
-	    window_w = jQuery(window).width(),
-	    main_wrapper = jQuery('.main_wrapper'),
-	    site_wrapper = jQuery('.site_wrapper'),
-	  
-	    fullscreen_block = jQuery('.fullscreen_block'),
-	    is_masonry = jQuery('.is_masonry'),
-	    grid_portfolio_item = jQuery('.grid-portfolio-item'),
-	    pp_block = jQuery('.pp_block'),
-	    head_border = 1;
+    html = jQuery('html'),
+    body = jQuery('body'),
+    footer = jQuery('footer'),
+    window_h = jQuery(window).height(),
+    window_w = jQuery(window).width(),
+    main_wrapper = jQuery('.main_wrapper'),
+    site_wrapper = jQuery('.site_wrapper'),
+    setTop = 0,
+    fullscreen_block = jQuery('.fullscreen_block'),
+    is_masonry = jQuery('.is_masonry'),
+    grid_portfolio_item = jQuery('.grid-portfolio-item'),
+    pp_block = jQuery('.pp_block'),
+    head_border = 1;
 	
 	jQuery(document).ready(function ($) {
 		"use strict";
-	    
-		if (html.hasClass('sticky_menu') && body.hasClass('admin-bar')) {
-			header.css('top', jQuery('#wpadminbar').height());
-		}
+		
 	    content_update();
 	    if (jQuery('.flickr_widget_wrapper').size() > 0) {
 	        jQuery('.flickr_badge_image a').each(function () {
@@ -274,7 +271,7 @@ jQuery(document).ready(function ($) {
 	    });
 	};
 	
-	var setTop = 0;
+	
 	function centerWindow404() {
 		"use strict";
 	    setTop = (window_h - pp_block.height() - header.height()) / 2 + header.height();
