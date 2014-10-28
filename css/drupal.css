@@ -1,3 +1,15 @@
+.pagerblock li.active a {
+	color: #aaaaaa;
+}
+
+ul.links.inline li:before {
+	height: 0px;
+}
+
+.thiscommentbody ul.inline li {
+  padding: 0px 8px 0px 0px
+}
+
 .google-maps {
   position: relative;
   padding-bottom: 40%; // This is the aspect ratio
@@ -33,7 +45,7 @@
   display: inline-block;
 }
 
-.contact-form .form-required {
+.contact-form .form-required, .comment-form .form-required {
 	display: none;
 }
 
