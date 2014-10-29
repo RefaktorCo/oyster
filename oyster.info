@@ -11,16 +11,17 @@ stylesheets[all][] = css/custom.css
 stylesheets[all][] = css/drupal.css
 
 ; Define theme JS libraries.
-scripts[] = js/modules.js
-scripts[] = js/theme.js
-scripts[] = js/jquery.countdown.min.js
-scripts[] = js/sticky.js
+scripts[1] = js/modules.js
+scripts[2] = js/theme.js
+scripts[3] = js/jquery.countdown.min.js
+scripts[4] = js/sticky.js
 
 ; Define theme block regions.
 regions[header_top] = Header Top
 regions[header_branding] = Header Branding
 regions[header_menu] = Header Menu
 regions[header_bottom] = Header Bottom
+regions[fullscreen] = Fullscreen
 regions[before_content] = Before Content
 regions[content] = Content
 regions[right_sidebar] = Right Sidebar

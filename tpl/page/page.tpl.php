@@ -38,9 +38,11 @@
                        
     <div class="header_rp">
       <nav>
+        <?php if (isset($page['header_menu'])): ?> 
         <div class="menu-main-menu-container">
           <?php print render($page['header_menu']); ?>    	
         </div>
+        <?php endif; ?>
         
         <div class="search_fadder"></div>
         <div class="header_search">
@@ -53,8 +55,10 @@
   
   </div>
 </header>
+<?php print render($page['fullscreen']); ?>
 <?php print render($page['before_content']); ?>
 
+<?php if (!render($page['fullscreen'])): ?>
 <div class="main_wrapper">
   <?php if ($page['left_sidebar'] || $page['right_sidebar']): ?><div class="bg_sidebar <?php if ($page['left_sidebar']) { print "is_left-sidebar"; }?> <?php if ($page['right_sidebar']) { print "is_right-sidebar";} ?>"></div><?php endif; ?>  
   <div class="content_wrapper">
@@ -104,7 +108,7 @@
     </div>
   </div>
 </div>    
-
+<?php endif; ?>
 <?php if ($page['footer_bottom_left']): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
