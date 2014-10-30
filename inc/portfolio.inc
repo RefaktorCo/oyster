@@ -62,13 +62,16 @@ function portfolio_related_works($nid){
         $like = field_view_field('node', $item, 'field_like');
         $like = drupal_render($like);
       }
-
-      // Get the portfolio item taxonomy terms.
-      $taxonomy = array();
-      foreach ($item->field_portfolio_category['und'] as $term) {
-	      $taxonomy[] = taxonomy_term_load($term['tid'])->name;
+      
+      $terms = '';
+      if (isset($item->field_portfolio_category['und'])) {
+	      // Get the portfolio item taxonomy terms.
+	      $taxonomy = array();
+	      foreach ($item->field_portfolio_category['und'] as $term) {
+		      $taxonomy[] = taxonomy_term_load($term['tid'])->name;
+	      }
+	      $terms = '<div class="preview_categ">'.t('in').' '.implode(', ', $taxonomy).'</div>';
       }
-      $terms = implode(', ', $taxonomy);
       
 	    // If image file does not exist in image style folder, create it.
 			if (isset($item->field_image['und']) && !file_exists(image_style_path('oyster_related_works', $item->field_image['und'][0]['uri']))){ 
@@ -98,7 +101,7 @@ function portfolio_related_works($nid){
 								'.$body.'
 								
 								<div class="featured_items_meta">
-									<div class="preview_categ">'.t('in').' '.$terms.'</div>
+									'.$terms.'
 									<div class="gallery_likes gallery_likes_add ">
 										'.$like.'
 									</div>											

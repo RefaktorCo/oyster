@@ -60,7 +60,7 @@
       <div class="post_meta_data">
         <div class="listing_meta">
           <span><?php print t('by '); print $name; ?></span>
-          <?php if ($content['field_portfolio_category']): ?>
+          <?php if (render($content['field_portfolio_category'])): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
           <?php endif; ?>
           <?php if (render($content['field_portfolio_skills'])) { print render($content['field_portfolio_skills']); } ?>                                                   

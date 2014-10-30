@@ -60,7 +60,7 @@
       <?php endif; ?>
     </div>
     <?php print render($title_prefix); ?>
-    <h3<?php print $title_attributes; ?> class="blogpost_title"><?php print $title; ?></h3>
+    <h3<?php print $title_attributes; ?> class="blogpost_title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
     <?php print render($title_suffix); ?>
 	
 	  <article class="contentarea clearfix"<?php print $content_attributes; ?>>

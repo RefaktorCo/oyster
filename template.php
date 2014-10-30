@@ -79,7 +79,7 @@ function oyster_preprocess_html(&$vars){
  * Implements template_preprocess_block().
  */
 function oyster_preprocess_block(&$vars) {
-  if ($vars['elements']['#block']->region == 'right_sidebar') {
+  if ($vars['elements']['#block']->region == 'right_sidebar' || $vars['elements']['#block']->region == 'left_sidebar') {
     $vars['classes_array'][] = 'sidepanel';
     $vars['title_attributes_array']['class'] = 'sidebar_header';
   }

@@ -116,6 +116,9 @@
       <div class="span6">
         <?php print render($page['footer_bottom_left']); ?> 
       </div>
+      <div class="span6">
+        <?php print render($page['footer_bottom_right']); ?> 
+      </div>
     </div>
   </div>
 </footer>    
