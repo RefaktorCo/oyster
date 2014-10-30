@@ -261,15 +261,7 @@ jQuery(document).ready(function ($) {
 	    }
 	}
 	
-	function animateList() {
-		"use strict";
-	    jQuery('.loading:first').removeClass('loading').animate({'z-index': '15'}, 200, function () {
-	        animateList();
-	        if (is_masonry.size() > 0) {
-	            is_masonry.masonry();
-	        }
-	    });
-	};
+	
 	
 	
 	function centerWindow404() {
@@ -294,3 +286,13 @@ jQuery(document).ready(function ($) {
 	    }
 	});
 });
+
+function animateList() {
+	"use strict";
+  jQuery('.loading:first').removeClass('loading').animate({'z-index': '15'}, 200, function () {
+    animateList();
+    if (is_masonry.size() > 0) {
+        is_masonry.masonry();
+    }
+  });
+};

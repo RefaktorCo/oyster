@@ -10,6 +10,7 @@ function oyster_js_alter(&$js) {
  }
 }
 
+
 /**
  * Define some variables for use in theme templates.
  */
@@ -197,7 +198,7 @@ function oyster_menu_link__header_menu(array $variables) {
   $output .= l($element['#title'], $element['#href'], $element['#localized_options']);
   // if link class is active, make li class as active too
   if(strpos($output,"active")>0){
-    $element['#attributes']['class'][] = "active";
+    $element['#attributes']['class'][] = "current-menu-parent";
   }
  
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . '</li>';
