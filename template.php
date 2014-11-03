@@ -430,3 +430,14 @@ function oyster_node_pagination($node, $mode = 'n') {
   
   return current($nids);
 }
+
+/**
+ * User CSS function. 
+ */
+function oyster_user_css() {
+  echo "<!-- User defined CSS -->";
+  echo "<style type='text/css'>";
+  echo theme_get_setting('user_css');
+  echo "</style>";
+  echo "<!-- End user defined CSS -->";	
+}
