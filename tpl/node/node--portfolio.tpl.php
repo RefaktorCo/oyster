@@ -30,7 +30,12 @@
       break;
     }
   }
+  
+  else if ($teaser) {
+	  include(drupal_get_path('theme', 'oyster').'/layouts/portfolio/portfolio-teaser.php');
+  }
+  
   else {
-	  include_once(drupal_get_path('theme', 'oyster').'/layouts/portfolio/portfolio-teaser.php');
+	  include_once(drupal_get_path('theme', 'oyster').'/layouts/portfolio/portfolio-simple.php');
   }
 ?>
