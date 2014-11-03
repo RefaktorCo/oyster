@@ -16,6 +16,25 @@ jQuery(document).ready(function ($) {
     grid_portfolio_item = jQuery('.grid-portfolio-item'),
     pp_block = jQuery('.pp_block'),
     head_border = 1;
+    
+    
+  function is_touch_device() {
+    return !!('ontouchstart' in window);
+  }
+  
+  jQuery(document).ready(function ($) {
+
+		/* If mobile browser, prevent click on parent nav item from redirecting to URL */
+		if(is_touch_device()) {	
+	
+			$('.main_header nav ul.menu .sub-menu').each(function (index, elem) {
+				/* Option 1: Use this to modify the href on the <a> to # */
+				$(elem).prev('a').attr('href' ,'#');	
+
+			});
+		}
+		
+	});
 	
 	jQuery(document).ready(function ($) {
 		"use strict";

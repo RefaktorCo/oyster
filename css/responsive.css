@@ -14,16 +14,9 @@
 img.logo_def {
 	display: block;
 }
-img.logo_retina {
-	display: none;
-}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
-    img.logo_def {
-        display: none !important;
-    }
-    img.logo_retina {
-        display: block !important;
-    }
+   
 
 	a.fs_share_close {
 		background:url(../img/retina/oyster_sprite.png) no-repeat -259px -40px;
