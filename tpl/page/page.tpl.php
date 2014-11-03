@@ -10,22 +10,22 @@
       <?php endif; ?> 
             
       <?php if ($site_name || $site_slogan): ?>
-      <div id="name-and-slogan"<?php if ($disable_site_name && $disable_site_slogan) { print ' class="hidden"'; } ?>>
+      <div id="name-and-slogan" <?php if ($disable_site_name && $disable_site_slogan) { print ' class="hidden"'; } ?>>
 
         <?php if ($site_name): ?>
           <?php if ($title): ?>
-            <div id="site-name"<?php if ($disable_site_name) { print ' class="hidden"'; } ?>>
+            <div id="site-name" <?php if ($disable_site_name) { print ' class="hidden"'; } ?>>
 	            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 	          </div>
           <?php else: /* Use h1 when the content title is empty */ ?>
-	          <h1 id="site-name"<?php if ($disable_site_name) { print ' class="hidden"'; } ?>>
+	          <h1 id="site-name" <?php if ($disable_site_name) { print ' class="hidden"'; } ?>>
 	            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
 	          </h1>
           <?php endif; ?>
         <?php endif; ?>
 
         <?php if ($site_slogan): ?>
-          <div id="site-slogan"<?php if ( ($disable_site_slogan ) ) { print 'class="hidden"'; } if ( (!$disable_site_slogan ) AND ($disable_site_name) ) { print 'class="slogan no-name"'; } else { print 'class="slogan"'; } ?>>
+          <div id="site-slogan" <?php if ( ($disable_site_slogan ) ) { print 'class="hidden"'; } if ( (!$disable_site_slogan ) AND ($disable_site_name) ) { print 'class="slogan no-name"'; } else { print 'class="slogan"'; } ?>>
             <?php print $site_slogan; ?>
           </div>
         <?php endif; ?>
