@@ -108,6 +108,13 @@ function oyster_form_system_theme_settings_alter(&$form, &$form_state) {
 	    '#type' => 'fieldset',
 	    '#title' => t('Article'),
 	  );
+           
+      // Meta Author
+	    $form['options']['meta']['article']['article_meta_author'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Author'),
+	      '#default_value' => theme_get_setting('article_meta_author'),
+	    );     
                
 	    // Meta Date
 	    $form['options']['meta']['article']['article_meta_date'] = array(
@@ -123,14 +130,7 @@ function oyster_form_system_theme_settings_alter(&$form, &$form_state) {
 	      '#default_value' => theme_get_setting('article_meta_comments'),
 	    );
 	    
-	    // Meta Tags
-	    $form['options']['meta']['article']['article_meta_tags'] = array(
-	      '#type' => 'checkbox',
-	      '#title' => t('Meta Tags'),
-	      '#default_value' => theme_get_setting('article_meta_tags'),
-	    );
-	    
-	    // Meta Title
+	  	// Meta Title
 	    $form['options']['meta']['article']['article_meta_title'] = array(
 	      '#type' => 'checkbox',
 	      '#title' => t('Meta Title'),

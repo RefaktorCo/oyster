@@ -43,8 +43,8 @@ settings[portfolio_meta_comments] = 1
 settings[portfolio_meta_title] = 1
 settings[portfolio_meta_share] = 1
 
+settings[article_meta_author] = 1
 settings[article_meta_date] = 1
 settings[article_meta_comments] = 1
-settings[article_meta_tags] = 1
 settings[article_meta_title] = 1
 settings[article_meta_share] = 1

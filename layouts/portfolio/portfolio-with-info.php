@@ -59,6 +59,9 @@
           <?php if ($content['field_portfolio_category']): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
           <?php endif; ?>
+          <?php if ( theme_get_setting('portfolio_meta_comments') == '1' ) : ?>
+          <span><a href="<?php print $node_url;?>/#comments"><?php print $comment_count; ?> <?php print t('Comment'); ?><?php if ($comment_count != "1" ) { echo "s"; } ?></a></span>
+          <?php endif; ?>
           <?php if (render($content['field_portfolio_skills'])) { print render($content['field_portfolio_skills']); } ?>                                                   
         </div>
         <div class="post_controls">
@@ -106,7 +109,7 @@
 				    </article>
 					   
 					  <div class="blog_post-footer sp-blog_post-footer ">
-						  <?php if (!$teaser && module_exists('oyster_utilities')) { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
+						  <?php if (!$teaser && module_exists('oyster_utilities') && theme_get_setting('portfolio_meta_share') == '1') { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
 				  
 						  <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 					    <div class="block_likes">
@@ -119,16 +122,7 @@
 						  
 						  <div class="clear"></div>
 						</div> 
-					   
-					  <div class="blogpost_user_meta">
-							<div class="author-ava"><?php print $user_picture; ?></div>
-							<div class="author-name"><h6><?php print t('About the Author:'); ?> <?php print $name; ?></h6></div>
-							<?php if (isset(user_load($uid)->field_author_info)): ?>
-							<div class="author-description"><?php print user_load($uid)->field_author_info['und'][0]['value']; ?></div>
-							<?php endif; ?>
-							<div class="clear"></div>
-				    </div>   
-				  
+
 				    <hr class="single_hr">          
 				  
 				    <?php print portfolio_related_works($nid); ?>

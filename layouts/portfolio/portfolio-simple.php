@@ -40,7 +40,9 @@
           <?php if ($content['field_portfolio_category']): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
           <?php endif; ?>  
+          <?php if ( theme_get_setting('portfolio_meta_comments') == '1' ) : ?>
           <span><a href="<?php print $node_url;?>/#comments"><?php print $comment_count; ?> <?php print t('Comment'); ?><?php if ($comment_count != "1" ) { echo "s"; } ?></a></span>
+          <?php endif; ?>
           <?php if (render($content['field_portfolio_skills'])) { print render($content['field_portfolio_skills']); } ?>
         </div>   
         <?php if ($display_submitted): ?>                                     
