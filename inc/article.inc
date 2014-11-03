@@ -1,7 +1,7 @@
 <?php
 
 function article_related_works($nid){
-  $count = '';
+  $count = '1';
   global $base_url;
   $query = new EntityFieldQuery();
 	$query
@@ -14,7 +14,10 @@ function article_related_works($nid){
   $output .= '<div class="row"><div class="span12 single_feature">';
   $output .= ' <div class="featured_items"><div class="items3 featured_portfolio"><ul class="item_list">';
   foreach ($results['node'] as $result) {
-    if ($result->nid != $nid && $count != '3') {
+    if ($count == 4) {
+	    break;
+    }
+    if ($result->nid != $nid) {
       // Load those nodes.
       $item = node_load($result->nid);
       
@@ -84,9 +87,9 @@ function article_related_works($nid){
 			  </div>
 			</li>			
 			';
-			
+		$count ++;	
 	  }
-	  $count ++;
+	  
   }
   $output .= '</ul></div></div></div></div><hr class="single_hr">';
   return $output;

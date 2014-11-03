@@ -25,10 +25,14 @@
     
       <div class="slider_data">
         <a href="javascript:void(0)" class="ltl_prev"><i class="icon-angle-left"></i></a><span class="num_current">1</span> <?php print t('of'); ?> <span class="num_all"></span><a href="javascript:void(0)" class="ltl_next"><i class="icon-angle-right"></i></a>
+        <?php print render($title_prefix); ?>
+        <?php if ( theme_get_setting('portfolio_meta_title') == '1' ) : ?>
         <h6 class="post_title"><?php print $title; ?></h6>
+        <?php endif; ?>
+        <?php print render($title_suffix); ?>
       </div>
       
-      <?php if (!$teaser && module_exists('oyster_utilities')): ?>
+      <?php if (!$teaser && module_exists('oyster_utilities') && theme_get_setting('portfolio_meta_share') == '1'): ?>
       <div class="slider_share">
         <?php print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); ?>
       </div>
@@ -46,7 +50,9 @@
       <div class="clear"></div>
       <div class="post_meta_data">
         <div class="listing_meta">
+          <?php if ( theme_get_setting('portfolio_meta_author') == '1' ) : ?> 
           <span><?php print t('by '); print $name; ?></span>
+          <?php endif; ?>
           <?php if ($content['field_portfolio_category']): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
           <?php endif; ?>

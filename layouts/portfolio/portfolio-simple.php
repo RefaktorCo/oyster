@@ -29,11 +29,13 @@
 	        <div class="pf_output_container"><?php print render($content['field_media_embed']);?></div>
 	      <?php endif; ?>
 	 	  </div>   
-		  <div class="blogpreview_top">
+		  <div class="blogpreview_top <?php if ( theme_get_setting('portfolio_meta_date') != '1' ) { print "nodate"; } ?>">
+		    <?php if ( theme_get_setting('portfolio_meta_date') == '1' ) : ?>
         <div class="box_date">
           <span class="box_month"><?php print format_date($node->created, 'custom', 'M'); ?></span>
           <span class="box_day"><?php print format_date($node->created, 'custom', 'd'); ?></span>
-        </div>                                            
+        </div>  
+        <?php endif ; ?>                                          
         <div class="listing_meta">
           <?php if ($content['field_portfolio_category']): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
@@ -46,7 +48,9 @@
         <?php endif; ?>
       </div>
       <?php print render($title_prefix); ?>
+      <?php if ( theme_get_setting('portfolio_meta_title') == '1' ) : ?>
       <h3<?php print $title_attributes; ?> class="blogpost_title"><?php print $title; ?></h3>
+      <?php endif ; ?> 
       <?php print render($title_suffix); ?>
     </div><!--.blog_post_page -->      
     
@@ -75,7 +79,7 @@
     </article>
 	   
 	  <div class="blog_post-footer sp-blog_post-footer ">
-		  <?php if (!$teaser && module_exists('oyster_utilities')) { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
+		  <?php if (!$teaser && module_exists('oyster_utilities') && theme_get_setting('portfolio_meta_share') == '1') { print theme('oyster_social_share', array('title' => $title, 'link' => $base_url.'/node/'.$nid, 'image' => $share_image)); }?>
      
       <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 		  <div class="block_likes">
@@ -89,6 +93,7 @@
 		  <div class="clear"></div>
 		</div> 
 	   
+	  <?php if ( theme_get_setting('portfolio_meta_author') == '1' ) : ?> 
 	  <div class="blogpost_user_meta">
 			<div class="author-ava"><?php print $user_picture; ?></div>
 			<div class="author-name"><h6><?php print t('About the Author:'); ?> <?php print $name; ?></h6></div>
@@ -97,6 +102,7 @@
 			<?php endif; ?>
 			<div class="clear"></div>
     </div>   
+    <?php endif; ?>
   
     <hr class="single_hr">          
   

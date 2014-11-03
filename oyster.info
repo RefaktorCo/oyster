@@ -2,7 +2,7 @@ name = Oyster
 description = Creative Photo Drupal 7 Theme. 
 core = 7.x
 engine = phptemplate
-version = 1.0-ALPHA
+version = 1.0
 
 ; Define theme CSS.
 stylesheets[all][] = css/theme.css
@@ -36,3 +36,15 @@ regions[footer_bottom_right]  = Footer Bottom Right
 
 ; Define theme setting defaults.
 settings[sticky_header] = 1
+
+settings[portfolio_meta_author] = 1
+settings[portfolio_meta_date] = 1
+settings[portfolio_meta_comments] = 1
+settings[portfolio_meta_title] = 1
+settings[portfolio_meta_share] = 1
+
+settings[article_meta_date] = 1
+settings[article_meta_comments] = 1
+settings[article_meta_tags] = 1
+settings[article_meta_title] = 1
+settings[article_meta_share] = 1

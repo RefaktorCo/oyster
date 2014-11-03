@@ -61,34 +61,88 @@ function oyster_form_system_theme_settings_alter(&$form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('Post Meta'),
   );
+  
+    // General
+	  $form['options']['meta']['portfolio'] = array(
+	    '#type' => 'fieldset',
+	    '#title' => t('Portfolio'),
+	  );
+              
+      // Meta Date
+	    $form['options']['meta']['portfolio']['portfolio_meta_author'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Author'),
+	      '#default_value' => theme_get_setting('portfolio_meta_author'),
+	    );
                
-    // Meta Date
-    $form['options']['meta']['meta_date'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Meta Date'),
-      '#default_value' => theme_get_setting('meta_date'),
-    );
-    
-    // Meta Title
-    $form['options']['meta']['meta_title'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Meta Title'),
-      '#default_value' => theme_get_setting('meta_title'),
-    );
-        
-    // Meta Date
-    $form['options']['meta']['meta_tags'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Meta Tags'),
-      '#default_value' => theme_get_setting('meta_tags'),
-    );
-    
-    // Meta Name
-    $form['options']['meta']['meta_name'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Meta Name'),
-      '#default_value' => theme_get_setting('meta_name'),
-    );
+	    // Meta Date
+	    $form['options']['meta']['portfolio']['portfolio_meta_date'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Date'),
+	      '#default_value' => theme_get_setting('portfolio_meta_date'),
+	    );
+	    	    
+	    // Meta Comments
+	    $form['options']['meta']['portfolio']['portfolio_meta_comments'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Comments'),
+	      '#default_value' => theme_get_setting('portfolio_meta_comments'),
+	    );
+	    
+	    // Meta Title
+	    $form['options']['meta']['portfolio']['portfolio_meta_title'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Title'),
+	      '#default_value' => theme_get_setting('portfolio_meta_title'),
+	    );
+	            
+	    // Meta Share
+	    $form['options']['meta']['portfolio']['portfolio_meta_share'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Share'),
+	      '#default_value' => theme_get_setting('portfolio_meta_share'),
+	    );
+	    
+	  // General
+	  $form['options']['meta']['article'] = array(
+	    '#type' => 'fieldset',
+	    '#title' => t('Article'),
+	  );
+               
+	    // Meta Date
+	    $form['options']['meta']['article']['article_meta_date'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Date'),
+	      '#default_value' => theme_get_setting('article_meta_date'),
+	    );
+	    
+	    // Meta Comments
+	    $form['options']['meta']['article']['article_meta_comments'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Comments'),
+	      '#default_value' => theme_get_setting('article_meta_comments'),
+	    );
+	    
+	    // Meta Tags
+	    $form['options']['meta']['article']['article_meta_tags'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Tags'),
+	      '#default_value' => theme_get_setting('article_meta_tags'),
+	    );
+	    
+	    // Meta Title
+	    $form['options']['meta']['article']['article_meta_title'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Title'),
+	      '#default_value' => theme_get_setting('article_meta_title'),
+	    );
+	            
+	    // Meta Share
+	    $form['options']['meta']['article']['article_meta_share'] = array(
+	      '#type' => 'checkbox',
+	      '#title' => t('Meta Share'),
+	      '#default_value' => theme_get_setting('article_meta_share'),
+	    );
         
   // CSS
   $form['options']['css'] = array(
