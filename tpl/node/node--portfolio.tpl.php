@@ -31,6 +31,6 @@
     }
   }
   else {
-	  include_once(drupal_get_path('theme', 'oyster').'/layouts/portfolio/portfolio-simple.php');
+	  include_once(drupal_get_path('theme', 'oyster').'/layouts/portfolio/portfolio-teaser.php');
   }
 ?>
