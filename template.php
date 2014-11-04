@@ -8,8 +8,41 @@ function oyster_js_alter(&$js) {
  if ((theme_get_setting('sticky_header') != '1') || (in_array('administrator', array_values($user->roles)))) {
    unset($js[drupal_get_path('theme', 'oyster') . '/js/sticky.js']);
  }
+ if (in_array('administrator', array_values($user->roles))) {
+   unset($js[drupal_get_path('theme', 'oyster') . '/js/animate.js']);	 
+ }
 }
 
+/**
+ * Modify theme_html_head_alter()
+ */
+function oyster_html_head_alter(&$head_elements) {
+	unset($head_elements['system_meta_generator']);
+	foreach ($head_elements as $key => $element) {
+		if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
+		  unset($head_elements[$key]);
+		}
+		if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'shortlink') {
+		  unset($head_elements[$key]);
+		}
+  }
+}
+
+/**
+ * Modify theme_preprocess_username()
+ */
+function oyster_preprocess_username(&$vars) {
+  global $theme_key;
+  $theme_name = $theme_key;
+  
+  // Add rel=author for SEO and supporting search engines
+  if (isset($vars['link_path'])) {
+    $vars['link_attributes']['rel'][] = 'author';
+  }
+  else {
+    $vars['attributes_array']['rel'][] = 'author';
+  }
+}
 
 /**
  * Define some variables for use in theme templates.
@@ -34,7 +67,7 @@ function oyster_process_page(&$variables) {
 * Add several style-related elements into the <head> tag.
 */
 function oyster_preprocess_html(&$vars){
- 
+  global $user;
   $viewport = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
@@ -72,6 +105,10 @@ function oyster_preprocess_html(&$vars){
  drupal_add_html_head( $ptsans, 'ptsans');
  drupal_add_html_head( $roboto, 'roboto');
  drupal_add_html_head( $font_awesome, 'fontawesome');
+ 
+ if ( in_array('administrator', array_values($user->roles)) ) {
+   drupal_add_css('body {opacity: 1;}', array('group' => CSS_THEME, 'type' => 'inline'));
+ }
 
 }
 

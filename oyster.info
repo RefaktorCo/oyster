@@ -12,9 +12,10 @@ stylesheets[all][] = css/drupal.css
 
 ; Define theme JS libraries.
 scripts[1] = js/modules.js
-scripts[2] = js/theme.js
-scripts[3] = js/jquery.countdown.min.js
-scripts[4] = js/sticky.js
+scripts[2] = js/animate.js
+scripts[3] = js/theme.js
+scripts[4] = js/jquery.countdown.min.js
+scripts[5] = js/sticky.js
 
 ; Define theme block regions.
 regions[header_top] = Header Top

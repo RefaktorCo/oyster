@@ -256,7 +256,7 @@ jQuery(document).ready(function ($) {
 	jQuery(window).load(function () {
 		"use strict";
 	    content_update();
-	    setTimeout("jQuery('body').animate({'opacity' : '1'}, 500)", 500);
+	    
 	});
 	
 	function content_update() {
@@ -279,9 +279,6 @@ jQuery(document).ready(function ($) {
 	        //
 	    }
 	}
-	
-	
-	
 	
 	function centerWindow404() {
 		"use strict";

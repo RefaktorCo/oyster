@@ -109,16 +109,20 @@
   </div>
 </div>    
 <?php endif; ?>
-<?php if ($page['footer_bottom_left']): ?>          
+<?php if (render($page['footer_bottom_left']) || render($page['footer_bottom_right'])): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
     <div class="row">
+      <?php if (render($page['footer_bottom_left'])): ?>
       <div class="span6">
         <?php print render($page['footer_bottom_left']); ?> 
       </div>
+      <?php endif; ?>
+      <?php if (render($page['footer_bottom_right'])): ?>
       <div class="span6">
         <?php print render($page['footer_bottom_right']); ?> 
       </div>
+      <?php endif; ?>
     </div>
   </div>
 </footer>    
