@@ -1,3 +1,11 @@
+.port-col .pagination {
+	margin-top: 40px;
+}
+
+.ww_block img {
+	max-width: inherit;
+}
+
 .blogpreview_top.nodate {
 	padding-left: 15px;
 }
