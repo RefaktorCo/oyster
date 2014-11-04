@@ -23,7 +23,7 @@
   <?php if ($content['comment_form']): ?>
   <div class="post-block post-leave-comment">
     <section id="comment-form-wrapper">
-      <h3><?php print t('Leave a comment'); ?></h3>
+      <h4><?php print t('Leave a comment!'); ?></h4>
       <?php print render($content['comment_form']); ?>
     </section> <!-- /#comment-form-wrapper -->
   </div>  

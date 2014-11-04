@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rise Documentation</title>
+<link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="style.css"/>
+<script src="jquery.js"></script>
+<script src="toc.js"></script>
+</head>
+<body>
+<div id="toc">
+	
+</div>
+
+
+<div id="wrapper">
+<h2>Overview</h2>
+<p>Rise is a beautiful multi purpose one page parallax responsive template perfectly tailored for creative professionals or agencies. For theme support that cannot be found in this documentation, please visit our <a href="http://refaktorthemes.com/support"> support forum</a>. 
+<p>Updated: 04/26/14<br>Author: <a href="http://refaktorthemes.com" target="_blank">Refaktor</a><br>Docs powered by: <a href="https://github.com/jgallen23/toc" target="_blank">TOC</a><br>Original design by <a href="http://themeforest.net/user/codeblvck" target="_blank">
+codeblvck</a></p>
+<h2>Installation</h2>
+<p>There are two ways Rise can be installed. For existing sites that already have content, the first method will only involve the installation and activation of the theme. The second option includes a full Drupal 7 install with the same SQL database file used to create the theme demo. Please choose which installation method works best for you and follow the instructions. We do highly recommend you perform the full install if you are new to Drupal or don't have any existing content you need to work with.
+<h3>Theme Only</h3>
+Option 1:
+<ul>
+  <li>Visit yourdomain.com/admin/appearance/install</li>
+  <li>Upload the Rise.zip file found inside the /theme folder in the download files</li>
+  <li>Enable and set to default</li>
+</ul>
+Option 2:
+<ul>
+  <li>Extract the Rise.zip file and upload the Rise folder via FTP to /sites/all/themes</li>
+  <li>Visit yourdomain.com/admin/appearance/</li>
+  <li>Scroll down to "DISABLED THEMES" and set and enable Rise</li>
+</ul>
+
+<h3>Full Drupal Install</h3>
+<p>The following steps are designed for people that have experience manually installing Drupal and importing databases. If you do not feel comfortable performing these steps yourself, contact your server administrator for help. <strong>NOTE</strong> this option is for a completely new Drupal install. Do not import the provided SQL file into an existing Drupal database or you will lose all of your data!</p>
+<ol>
+<li>Create a database for this installation of Drupal and import the SQL file that came with the theme.</li>
+<li>Follow <a href="http://drupal.org/documentation/install/settings-file" target="_blank"> these directions</a> to create the settings.php file. Save this file somewhere so you can copy it over to the Drupal installation we have provided.</li>
+<li>Copy the entire contents of the /demo/Rise folder from the download files to the location on your web server where you want your site to be accessed. If you want your primary domain to point to your install of Rise, copy everything to the root folder. If you want your site to be accessed as a subsection of your domain (for example: yourdomain.com/drupal) then simply rename the /demo/Rise folder to the desired name and upload to the root of your server. Also be sure to copy over the settings.php file mentioned in the previous step</li>
+<li>Login to your site with the username <strong>admin</strong> and the password <strong>admin</strong> and visit /admin/people to change the admin username and password.</li>
+<li>Go through the Drupal configuration found in /admin/config options and update all the necessary information to reflect your website. Also be sure to visit /admin/config/media/file-system and change the Temporary Directory if needed.</li>
+
+</ol>
+<h2>Rise Sub-Theme</h2>
+
+<p>Rise comes with a shell sub-theme called Rise_sub that you can use to make customizations to the style and template structure of the parent theme without having to modify the parent theme itself. This is useful if you plan on updating the parent theme as we release updates on ThemeForest. If you performed the full install you will already see Rise_sub in the list of themes available. If you did the standalone install you can find the Rise_sub.zip file in the root of the download files and you can install it like any other theme.</p>
+<p>There is an empty stylesheet already defined which is /css/custom.css (inside the Rise_sub folder). Use this file to add all of the custom CSS that you plan on using. You can also copy any template file from the /Rise/templates folder into the /Rise_sub/templates folder and it will listen to the sub-themes template file first. This will allow you to update the parent theme as we make updates without losing your customizations. Just pay attention to the changelog and compare the parent theme files with yours and make any adjustments as needed.</p>
+<p>You will need to configure the sub-themes theme settings separately from the parent theme's, so visit /admin/appearance/settings/Rise_sub to configure the theme settings for the sub-theme. You also need to configure the block regions separately.</p>
+
+
+<h2>Modules</h2>
+<p>Below are the modules required to fully utilize the theme:</p>
+
+<ul>
+<li><a href="http://drupal.org/project/ctools">Chaos Tools</a></li>
+<li><a href="http://drupal.org/project/views">Views</a></li>
+<li>Rise Menu (/modules/rise_menu in the download files)</li>
+</ul>
+
+<p>These are additional modules used in the demo but are not required:</p>
+<li><a href="http://drupal.org/project/admin_menu">Admin Menu</a></li>
+<li><a href="http://drupal.org/project/pathauto">Pathauto</a></li>
+<li><a href="http://drupal.org/project/token">Token (required by Pathauto)</a></li>
+
+<h3>Rise Menu</h3>
+<p>
+Rise uses a custom menu module to create the "scroll to" style menu used on the front page. The module can be found inside the /modules folder in the download files and can be uploaded to /sites/all/modules. When activated, it creates an empty menu called Rise Menu which is the only menu this module will affect. When creating/editing a menu link in the Rise Menu, an option to enable the Scroll-To effect can be found at the top of the edit menu link page (see image below):
+</p>
+<img src="images/rise-menu-1.png"><br/><br/>
+<p>
+When that option is checked, a select menu appears with a list of all the blocks inside the "Front Content" region. Select the block you would like the menu item to link to and the module takes care of the rest. You can also create a standard menu item by not checking the "Enable Scroll-To" option which results in the standard options normally seen on the edit menu item page. The Rise Menu supports dropdowns as well so make sure to check the "show as expanded" box on all parent items with children to ensure the dropdown menu works correctly.
+</p>
+
+
+<h3>Rise Custom Content</h3>
+<p>If you used the "theme only" option to install the theme on an existing install that already has content we recommend you use our Rise Custom Content module to create the additional content types, fields and Views needed to fully utilize the theme. You will find it in the /assets folder in the download files. This module is a custom <a href="http://drupal.org/project/features" target="_blank">Features</a> module and will not run without it. We recommend copying all of the modules from the /modules folder into your install if you do not already have them. After you have all the modules simply upload and activate the Rise Custom Content module and the content types, fields and views will automatically be created.</p>
+
+
+<h2>Front Page</h2>
+<p>
+Rise is a "One Page" style theme so the vast majority of your content should be found there. We've provided a lot of content types and templates for you to set up your front page how you want. Please refer to the "Content Types" portion of this documentation below for a detailed outline of all the different content types available, but for now we're going to briefly explain how to set up your front page.
+</p>
+<p>
+<ol>
+<li>Visit /node/add and create a new "Basic Page" content node to be used as your front page. You can give it a URL alias of "front" or you can just leave it and note the node ID.</li>
+<li>Visit /admin/config/system/site-information and set the "Default front page" option in the FRONT PAGE section of the settings. Either enter the URL alias or node/X (X being the ID of the basic page content node you created).</li>
+<li>Once you have some blocks, visit /admin/structure/block and add them to the Front Page Content region. This region is unique to the front page only and will only be seen there so you don't have to worry about setting up any block visibility settings for those blocks.</li>
+<li>As outlined in the Menu portion of the documentation above, you can use the Rise Menu module to create your front page menu. You can link your menu items to individual blocks placed in the Front Page Content region and it will smooth scroll to those blocks when the links are clicked.</li>
+</ol>
+</p>
+<h2>Blog Page</h2>
+<p>
+If you want your Rise powered site to have a blog we have prepared a couple template files just for that purpose. Rise utilizes a content type called Blog Page, so if you don't already have that set up refer to the Content Types documentation below for how to set that up. Here are the steps you can take to create a blog page like the one seen on the Rise demo:</p>
+<p>
+<ol>
+<li>Visit /node/add and create a Blog Page content type node. This will be the page where the Blog view block will display so give it a URL alias of "Blog" or something similar. </li>
+<li>
+Next you will need a view to display your articles. Either create your own or you can import the one we created for the demo from the /assets/views/blog.txt file in the folder you downloaded from ThemeForest.	
+</li>
+<li>
+Visit /admin/structure/block and set the blog view block to the content region. Edit the block and set it to only display on your blog page via the block visibility settings. 
+</li>
+<li>There are two regions unique to the "Blog Page" node template: Block Menu Left and Block Menu Right. On the demo this is used to display a simple taxonomy term menu in the left region and the search block in the right. You can add whatever blocks you like to these regions and they will display at the top of your blog page and article nodes.</li>
+</ol>
+</p>	
+	
+</p>
+
+<h2>Content Types</h2>
+
+<h4>About</h4>
+<img src="images/rise-about-1.png" height="400px"><br/><br/>
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-about-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field displayed at the top of the block.</li>
+<li><strong>About Headline:</strong> Longer string of text displayed below the block title.</li>
+<li><strong>About Image:</strong> An image displayed in the left portion of the block</li>
+<li><strong>About Image Quote:</strong> A small quote displayed under the image</li>
+<li><strong>Body:</strong> The default Drupal body field displayed to the right of the image.</li>
+<li><strong>About Link:</strong> An optional link displayed below the block body.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--about.tpl.php</li>
+  <li>/templates/views/views-view--about.tpl.php</li>
+  <li>/templates/views/views-view-unformated--about.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Front Page About" to display the "About" content. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/about.txt file. This view will create a block called View: Front Page About that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+<h4>Article</h4>
+<img src="images/rise-article-1.png" height="400px"><br/><br/>
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-article-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field displayed at the top of the block.</li>
+<li><strong>Body:</strong> The default Drupal body field.</li>
+<li><strong>Tags:</strong> Standard article term reference field.</li>
+<li><strong>Image:</strong> Standard article image field</li>
+<li><strong>Before Title:</strong> Long text field for embedding content like videos that will display before the article title.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--article.tpl.php</li>
+	<li>/templates/page/page--node--article.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Blog" to display the "About" content. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/blog.txt file. This view will create a block called View: Blog that can be added to the "content" region (see the "Blog" section of these docs for more instructions regarding the blog page).</p>
+
+
+<h4>Blog Page</h4>
+<p>This content type is used to create the page that displays the "Blog" view block. It uses no additional fields and is only used in coordination with the following template file: /templates/page/page--node--blog-page.tpl.php. To use this page as your blog page, simply create a node with this content type and you can use the block visibility settings on the Blog view block to only display that block on this node page.</p>
+
+<h4>Clients</h4>
+<img src="images/rise-clients-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-clients-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field displayed at the top of the block.</li>
+<li><strong>Client Images:</strong> An image field that allows for multiple images to be uploaded.</li>
+<li><strong>Client Background Image:</strong> An image used as the background of the Clients block in a parallax style.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--clients.tpl.php</li>
+  <li>/templates/views/views-view--front-page-clients.tpl.php</li>
+  <li>/templates/views/views-view-unformated--front-page-clients.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Front Page Clients" to display the "Clients" content. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/clients.txt file. This view will create a block called View: Front Page Clients that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+<p><strong>Note:</strong> if you plan on using the testimonials feature as well, import the testimonials view first as the default "Front Page Clients" view uses the Testimonials view inside it's footer.</p>
+
+<h4>Intro</h4>
+<img src="images/rise-intro-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-intro-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Intro Background:</strong> An image that can be used as the background for the front page Intro block.</li>
+<li><strong>Intro Video Background:</strong> A field for adding a YouTube video ID to display an optional block video background.</li>
+<li><strong>Intro Content:</strong> A long text field for adding any additional content to display in the block.</li>
+<li><strong>Intro Link:</strong> An optional URL field to link to a page section.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--intro.tpl.php</li>
+  <li>/templates/views/views-view--intro-block.tpl.php</li>
+  <li>/templates/views/views-view-unformated--intro-block.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Intro Block" to display the "Intro" content. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/intro.txt file. This view will create a block called View: Front Page Clients that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+<p><strong>Special Instructions:</strong></p>
+<p>
+To display a simple slider of text captions as seen on the demo, the following markup can be used inside the Intro Content field:
+</p>
+<pre>
+&lt;!-- intro text carousel --&gt;
+&lt;div class=&quot;intro-text-slider&quot;&gt;
+  &lt;ul class=&quot;slides&quot;&gt;
+    &lt;li&gt;&lt;h5&gt;SELF PROCLAIMED DIGITAL NINJA.&lt;/h5&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;h5&gt;MAKER OF BEAUTIFUL DIGITAL THINGS.&lt;/h5&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;h5&gt;COFFEE JUNKIE AND A NIGHT OWL.&lt;/h5&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+<h4>Parallax</h4>
+<img src="images/rise-parallax-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-parallax-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Image:</strong> A simple image field that will display below the block title.</li>
+<li><strong>Body:</strong> The default Drupal body field displayed below the image field.</li>
+<li><strong>Parallax Background:</strong> An image field that will display as the block background in a parallax style.</li>
+<li><strong>Parallax Category:</strong> An optional field that is a term reference to a Parallax taxonomy vocabulary.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--parallax.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses two views that display content from the Parallax content type but you can create as many instances of Parallax content as you like. We will outline each one individually:</p>
+
+<p><strong>Front Parallax Solutions:</strong></p>
+<img src="images/rise-parallax-2.png" width="800px"><br/><br/>
+<p>The content for this Parallax block is some basic markup using three individual columns. Below is the markup used in this block:</p>
+<pre>
+&lt;div class=&quot;dots&quot;&gt;&lt;/div&gt;
+
+&lt;!-- first block --&gt;
+&lt;div class=&quot;four columns center pull-left&quot;&gt;
+  &lt;!-- main icon --&gt;
+  &lt;div class=&quot;main-icon&quot;&gt;
+    &lt;i class=&quot;fa fa-expand&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;!-- columns info --&gt;
+  &lt;h4&gt;RESPONSIVE DESIGN&lt;/h4&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, adipiscing elit. Maecenas neque diam, luctus at laoreet in, auctor ut tellus. Etiam enim lacus, ornare et tempor et, rhoncus sem.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- second block --&gt;
+&lt;div class=&quot;four columns center&quot;&gt;
+  &lt;!-- main icon --&gt;
+  &lt;div class=&quot;main-icon&quot;&gt;
+    &lt;i class=&quot;fa fa-apple&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;!-- columns info --&gt;
+  &lt;h4&gt;RETINA READY&lt;/h4&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, adipiscing elit. Maecenas neque diam, luctus at laoreet in, auctor ut tellus. Etiam enim lacus, ornare et tempor et, rhoncus sem.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- third block --&gt;
+&lt;div class=&quot;four columns center&quot;&gt;
+  &lt;!-- main icon --&gt;
+  &lt;div class=&quot;main-icon&quot;&gt;
+    &lt;i class=&quot;fa fa-star-o&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;!-- columns info --&gt;
+  &lt;h4&gt;WELL DOCUMENTED&lt;/h4&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, adipiscing elit. Maecenas neque diam, luctus at laoreet in, auctor ut tellus. Etiam enim lacus, ornare et tempor et, rhoncus sem.
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- end four columns --&gt;
+</pre>
+<p>This particular demo View can be imported using the code from the /assets/views/front-parallax.txt file.</p>
+
+<p><strong>Blog Parallax:</strong></p>
+<img src="images/rise-parallax-1.png" width="800px"><br/><br/>
+<p>This particular demo View can be imported using the code from the /assets/views/blog-parallax.txt file.</p>
+<p><strong>Special Instructions:</strong></p>
+<p>As noted the theme demo is using a taxonomy vocabulary called Parallax linked to the Parallax content type via a term reference field. You can create/manage taxonomy vocabularies via /admin/structure/taxonomy and these taxonomy terms can be used within Views to call specific nodes of Parallax content. Only one Parallax content node can be used per view so this taxonomy vocabulary is needed if you plan on having multiple Parallax view blocks.</p>
+
+<h4>Skills and Services</h4>
+
+<img src="images/rise-skills-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-skills-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Skills Icon:</strong> A text field for a Font Awesome icon class.</li>
+<li><strong>Body:</strong> The default Drupal body field displayed below the skills icon.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--skills-and-services.tpl.php</li>
+  <li>/templates/views/views-view--skills-and-services.tpl.php</li>
+  <li>/templates/views/views-view-unformated--skills-and-services.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Front Page Testimonials" to display the content of the testimonials content type. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/testimonials.txt file.</p>
+
+<p><strong>Special Instructions:</strong></p>
+<p>
+As noted above in the "Clients" section, this view is displayed inside the footer of the Clients view to be a part of the Clients view block. 
+</p>
+
+<h4>Testimonials</h4>
+
+<img src="images/rise-testimonials-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-testimonials-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Body:</strong> The default Drupal body field.</li>
+<li><strong>Testimonial Name:</strong> Field for the name of the person giving the testimonial.</li>
+<li><strong>Testimonial Company:</strong> Field for the company or organization the testimonial author represents.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--testimonials.tpl.php</li>
+  <li>/templates/views/views-view--front-page-testimonials.tpl.php</li>
+  <li>/templates/views/views-view-unformated--front-page-testimonials.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Skills and Services" to display the content of the same name. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/skills.txt file. This view will create a block called View: Skills and Services that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+
+<h4>Twitter Feed</h4>
+<p><strong>Note:</strong> Before you can use the Twitter widget you will need the necessary authentication keys. Visit <a href="https://dev.twitter.com/apps" target="_blank">https://dev.twitter.com/apps</a> and log in with your Twitter account. Once there you can create an app and generate the OAuth keys needed to enter into the corresponding content type fields.</p>
+
+<img src="images/rise-twitter-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-twitter-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Twitter Handle:</strong> The account for the feed you wish to display.</li>
+<li><strong>Twitter Consumer Key:</strong> The consumer key OAuth key.</li>
+<li><strong>Twitter Consumer Secret:</strong> The consumer secret OAuth key.</li>
+<li><strong>Twitter User Token:</strong> The user token kOAuth key.</li>
+<li><strong>Twitter User Secret:</strong> The user secret OAuth key.</li>
+<li><strong>Twitter Background Image:</strong> An image field that will display as the block background in a parallax style.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--twitter-feed.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Front Page Twitter" to display the Twitter feed content. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/twitter.txt file. This view will create a block called View: Front Page Twitter that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+
+<h4>Portfolio</h4>
+
+<img src="images/rise-portfolio-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-portfolio-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Body:</strong> The default Drupal body field.</li>
+<li><strong>Portfolio Image:</strong> Image field that allows for multiple images. First image will appear in block grid.</li>
+<li><strong>Portfolio Category:</strong> Term reference field linked to a Portfolio taxonomy vocabulary.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--portfolio.tpl.php</li>
+  <li>/templates/views/views-view--portfolio.tpl.php</li>
+  <li>/templates/views/views-view-unformated--portfolio.tpl.php</li>
+  <li>/templates/views/views-view-fields--portfolio.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+
+<p>The demo uses a view called "Portfolio" to display the content of the same name. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/portfolio.txt file. This view will create a block called View: Portfolio that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+<p><strong>Portfolio Filters:</strong></p>
+
+<p>The Portfolio Block view includes support for an Isotope filter effect powered by Taxonomy terms. To utilize this effect visit /admin/structure/taxonomy and create a new vocabulary (example: Portfolio). After creating your vocabulary you can create the terms you wish to use to categorize your portfolio items. This taxonomy vocabulary can be linked to the Portfolio content type via a term reference field so you can select the category or categories you want to place your items into.</p>
+
+<p>The filters are powered by a view block called Portfolio Filters that should be added to the header of the Portfolio view. If you don't already have this view you can use the code /assets/views/portfolio-filters.txt to import this view block.</p>
+
+<p><strong>Template files:</strong></p>
+<ul>
+  <li>/templates/views/views-view-list--portfolio-filters.tpl.php</li>
+  <li>/templates/views/views-view-fields--portfolio-filters.tpl.php</li>
+</ul>
+
+<h4>Contact</h4>
+
+<img src="images/rise-contact-1.png" width="800px"><br/><br/>
+
+<p>This content type can be used to create a block like the one pictured above. It uses the following fields:</p>
+
+<img src="images/rise-contact-fields.png" width="800px"><br/><br/>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><strong>Title:</strong> The default Drupal title field.</li>
+<li><strong>Contact Caption:</strong> An optional text field that will display below the block title.</li>
+</ul>
+
+<p><strong>Template files:</strong></p>
+<ul>
+	<li>/templates/node/node--contact.tpl.php</li>
+</ul>
+
+<p><strong>Views:</strong></p>
+<p>The demo uses a view called "Front Page Contact" to display the custom contact block. If you are working off a fresh install and did not use the Rise Custom Content module you can manually import the view using the code from the /assets/views/contact.txt file. This view will create a block called View: Front Page Contact that can be added to the "Front Content" region and linked to via the Rise Menu.</p>
+
+<h2>Custom Blocks</h2>
+
+<p>There are several blocks seen on the demo that are just some simple HTML markup that didn't really warrant a dedicated content type and node templates. We will outline each of those for you here and provide some sample markup you can use in your blocks to replicate what you see. Keep in mind you will want to use the full HTML text filter when using any of this markup.</p>
+
+<h4>Animating Statistics</h4>
+<img src="images/rise-random-facts.png" width="800px"><br/><br/>
+<pre>
+&lt;div class=&quot;grey&quot;&gt;
+  &lt;!-- stat section heading --&gt;
+  &lt;section class=&quot;row heading&quot;&gt;
+    &lt;h3 class=&quot;s-bold&quot;&gt;SOME RANDOM FACTS FOR FUN&lt;/h3&gt;
+  &lt;/section&gt;
+	
+  &lt;!-- animating statistics --&gt;
+  &lt;section class=&quot;row center bigtoppadding&quot;&gt;
+  
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;!-- add stat number to data-perc --&gt;
+      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;703&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
+        &lt;h5 class=&quot;stat-title&quot;&gt;ITEMS SOLD&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- END three COLUMNS --&gt;
+  
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;!-- add stat number to data-perc --&gt;
+      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;32&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
+        &lt;h5 class=&quot;stat-title&quot;&gt;SATISFIED CLIENTS&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- END three COLUMNS --&gt;
+	  
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;!-- add stat number to data-perc --&gt;
+      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;130&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
+        &lt;h5 class=&quot;stat-title&quot;&gt;PROJECTS COMPLETED&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- END three COLUMNS --&gt;
+	  
+    &lt;div class=&quot;three columns&quot;&gt;
+      &lt;!-- add stat number to data-perc --&gt;
+      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;472&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
+        &lt;h5 class=&quot;stat-title&quot;&gt;PICTURES TAKEN&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- END three COLUMNS --&gt;
+    
+  &lt;/section&gt;
+&lt;/div&gt;	
+	
+</pre>
+<h4>Work Method</h4>
+<img src="images/rise-work-method.png" width="800px"><br/><br/>
+<pre>
+&lt;div id=&quot;method&quot;&gt;
+  &lt;div class=&quot;white&quot;&gt;
+  
+    &lt;!-- section heading --&gt;
+    &lt;section class=&quot;row heading&quot;&gt;
+      &lt;h3&gt;MY WORK METHOD&lt;/h3&gt;
+      &lt;h2&gt;DESIGN SHOULD NEVER SAY LOOK AT ME &lt;br&gt;
+      IT SHOULD SAY LOOK AT THIS &lt;/h2&gt;
+    &lt;/section&gt;
+		
+    &lt;section class=&quot;row bigtoppadding&quot;&gt;
+      &lt;!-- method divided into two six containers --&gt;
+      &lt;div class=&quot;six columns&quot;&gt;
+      
+        &lt;!-- method 1 --&gt;
+        &lt;div class=&quot;method-field&quot;&gt;
+          &lt;div class=&quot;two columns&quot;&gt;
+            &lt;span class=&quot;method-number&quot;&gt;01&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;!-- method detail --&gt;
+          &lt;div class=&quot;ten columns method-detail&quot;&gt;
+            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
+            &lt;p&gt;
+              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- method 2 --&gt;
+        &lt;div class=&quot;method-field&quot;&gt;
+          &lt;div class=&quot;two columns&quot;&gt;
+            &lt;span class=&quot;method-number&quot;&gt;02&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;!-- method detail --&gt;
+          &lt;div class=&quot;ten columns method-detail&quot;&gt;
+            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
+            &lt;p&gt;
+              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- method 3 --&gt;
+        &lt;div class=&quot;method-field&quot;&gt;
+          &lt;div class=&quot;two columns&quot;&gt;
+            &lt;span class=&quot;method-number&quot;&gt;03&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;!-- method detail --&gt;
+          &lt;div class=&quot;ten columns method-detail&quot;&gt;
+            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
+            &lt;p&gt;
+              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- method 4 --&gt;
+        &lt;div class=&quot;method-field&quot;&gt;
+          &lt;div class=&quot;two columns&quot;&gt;
+            &lt;span class=&quot;method-number&quot;&gt;04&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;!-- method detail --&gt;
+          &lt;div class=&quot;ten columns method-detail&quot;&gt;
+            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
+            &lt;p&gt;
+              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- method 5 --&gt;
+        &lt;div class=&quot;method-field&quot;&gt;
+          &lt;div class=&quot;two columns&quot;&gt;
+            &lt;span class=&quot;method-number&quot;&gt;05&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;!-- method detail --&gt;
+          &lt;div class=&quot;ten columns method-detail&quot;&gt;
+            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
+            &lt;p&gt;
+              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+      &lt;/div&gt;	
+    &lt;/section&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h4>Video Embed</h4>
+<img src="images/rise-video-embed.png" width="800px"><br/><br/>
+<pre>
+&lt;div class=&quot;grey&quot;&gt;
+  &lt;section class=&quot;row&quot;&gt;
+  
+    &lt;!-- left side --&gt;
+    &lt;div class=&quot;six columns&quot;&gt;
+      &lt;h2 class=&quot;light&quot;&gt;INTRINSIC VIDEO &lt;span class=&quot;s-bold&quot;&gt;EMBEDDING&lt;/span&gt;&lt;/h2&gt;
+      &lt;p class=&quot;smallbottompadding&quot;&gt;
+        At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- right side --&gt;
+    &lt;div class=&quot;six columns&quot;&gt;
+      &lt;!-- always embed video as below --&gt;
+      &lt;article class=&quot;vimeo video&quot;&gt; 
+        &lt;iframe src=&quot;http://player.vimeo.com/video/55068714&quot;&gt;
+        &lt;/iframe&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+    
+  &lt;/section&gt;
+&lt;/div&gt;
+</pre>
+
+<h4>Footer Block</h4>
+<img src="images/rise-footer.png" width="800px"><br/><br/>
+<pre>
+&lt;!-- section heading --&gt;
+&lt;section class=&quot;row heading&quot;&gt;
+&lt;h4&gt;COME FIND ME&lt;/h4&gt;
+&lt;h5 class=&quot;eight columns centered grey-text&quot;&gt;I am usually cooking something up at one of these social networks. Lets be friends.&lt;/h5&gt;
+&lt;/section&gt;
+
+&lt;!-- social media icons --&gt;
+&lt;section class=&quot;row&quot;&gt;
+  &lt;ul class=&quot;ring-list&quot;&gt;
+	
+    &lt;!-- link to phone info modal --&gt;
+    &lt;li class=&quot;fade&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;switch&quot; gumby-trigger=&quot;#phone-info&quot;&gt;&lt;i class=&quot;fa fa-phone&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	
+    &lt;!-- add social media links here --&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-dribbble&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;
+
+&lt;!-- copyright --&gt;
+&lt;section class=&quot;row copyright&quot;&gt;
+  &lt;p class=&quot;grey-text&quot;&gt;
+    &Acirc;&copy; Rise Template 2014. All rights reserved&lt;br&gt;
+    Template by Refaktor.
+  &lt;/p&gt;
+&lt;/section&gt;	
+</pre>
+<h2>Theme Settings</h2>
+<img src="images/rise-settings.png" width="1000px"><br/><br/>
+<p>The Rise theme settings can be accessed via /admin/appearance/settings/ and then clicking on the name of your active theme. There are four sections, including the standard Drupal settings. Go through each tab and configure the settings to your liking.</p>
+
+<h2>Block Regions</h2>
+<p>Rise features 10 block regions where you can add your blocks. Visit yourdomain.com/admin/structure/block to add your own content to the defined block regions. Press "Add Block" to create a new custom blog, or select an existing block from the Disabled list below the defined block regions.</p>
+
+<h2>Thank You</h2>
+<p>Thank you very much for purchasing the Rise Responsive Drupal 7 theme. Once again if you have any issues or feedback please connect via the <a href="http://themeforest.net/user/refaktor#from" target="_blank">ThemeForest author page</a>. Enjoy using Rise!</p>
+</p>&copy 2014 Refaktor.
+</div>
+<script>$('#toc').toc();</script></body></html>
