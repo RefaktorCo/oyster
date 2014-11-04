@@ -18,10 +18,8 @@ scripts[4] = js/jquery.countdown.min.js
 scripts[5] = js/sticky.js
 
 ; Define theme block regions.
-regions[header_top] = Header Top
 regions[header_branding] = Header Branding
 regions[header_menu] = Header Menu
-regions[header_bottom] = Header Bottom
 regions[fullscreen] = Fullscreen
 regions[content] = Content
 regions[right_sidebar] = Right Sidebar

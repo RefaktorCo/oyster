@@ -228,239 +228,45 @@ video|Video Background
 	<li>/templates/node/node--oyster-page.tpl.php</li>
 </ul>
 
-<h2>Blog Page</h2>
-<p>
-If you want your Oyster powered site to have a blog we have prepared a couple template files just for that purpose. Oyster utilizes a content type called Blog Page, so if you don't already have that set up refer to the Content Types documentation below for how to set that up. Here are the steps you can take to create a blog page like the one seen on the Oyster demo:</p>
-<p>
-<ol>
-<li>Visit /node/add and create a Blog Page content type node. This will be the page where the Blog view block will display so give it a URL alias of "Blog" or something similar. </li>
-<li>
-Next you will need a view to display your articles. Either create your own or you can import the one we created for the demo from the /assets/views/blog.txt file in the folder you downloaded from ThemeForest.	
-</li>
-<li>
-Visit /admin/structure/block and set the blog view block to the content region. Edit the block and set it to only display on your blog page via the block visibility settings. 
-</li>
-<li>There are two regions unique to the "Blog Page" node template: Block Menu Left and Block Menu Right. On the demo this is used to display a simple taxonomy term menu in the left region and the search block in the right. You can add whatever blocks you like to these regions and they will display at the top of your blog page and article nodes.</li>
-</ol>
-</p>	
-
 <h2>Custom Blocks</h2>
 
 <p>There are several blocks seen on the demo that are just some simple HTML markup that didn't really warrant a dedicated content type and node templates. We will outline each of those for you here and provide some sample markup you can use in your blocks to replicate what you see. Keep in mind you will want to use the full HTML text filter when using any of this markup.</p>
 
-<h4>Animating Statistics</h4>
-<img src="images/Oyster-random-facts.png" width="800px"><br/><br/>
+<h4>Flickr Feed</h4>
 <pre>
-&lt;div class=&quot;grey&quot;&gt;
-  &lt;!-- stat section heading --&gt;
-  &lt;section class=&quot;row heading&quot;&gt;
-    &lt;h3 class=&quot;s-bold&quot;&gt;SOME RANDOM FACTS FOR FUN&lt;/h3&gt;
-  &lt;/section&gt;
-	
-  &lt;!-- animating statistics --&gt;
-  &lt;section class=&quot;row center bigtoppadding&quot;&gt;
-  
-    &lt;div class=&quot;three columns&quot;&gt;
-      &lt;!-- add stat number to data-perc --&gt;
-      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;703&quot;&gt;
-        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
-        &lt;h5 class=&quot;stat-title&quot;&gt;ITEMS SOLD&lt;/h5&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;!-- END three COLUMNS --&gt;
-  
-    &lt;div class=&quot;three columns&quot;&gt;
-      &lt;!-- add stat number to data-perc --&gt;
-      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;32&quot;&gt;
-        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
-        &lt;h5 class=&quot;stat-title&quot;&gt;SATISFIED CLIENTS&lt;/h5&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;!-- END three COLUMNS --&gt;
-	  
-    &lt;div class=&quot;three columns&quot;&gt;
-      &lt;!-- add stat number to data-perc --&gt;
-      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;130&quot;&gt;
-        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
-        &lt;h5 class=&quot;stat-title&quot;&gt;PROJECTS COMPLETED&lt;/h5&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;!-- END three COLUMNS --&gt;
-	  
-    &lt;div class=&quot;three columns&quot;&gt;
-      &lt;!-- add stat number to data-perc --&gt;
-      &lt;div class=&quot;stat-counter&quot; data-perc=&quot;472&quot;&gt;
-        &lt;span class=&quot;count&quot;&gt;&lt;/span&gt;
-        &lt;h5 class=&quot;stat-title&quot;&gt;PICTURES TAKEN&lt;/h5&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;!-- END three COLUMNS --&gt;
-    
-  &lt;/section&gt;
-&lt;/div&gt;	
-	
-</pre>
-<h4>Work Method</h4>
-<img src="images/Oyster-work-method.png" width="800px"><br/><br/>
-<pre>
-&lt;div id=&quot;method&quot;&gt;
-  &lt;div class=&quot;white&quot;&gt;
-  
-    &lt;!-- section heading --&gt;
-    &lt;section class=&quot;row heading&quot;&gt;
-      &lt;h3&gt;MY WORK METHOD&lt;/h3&gt;
-      &lt;h2&gt;DESIGN SHOULD NEVER SAY LOOK AT ME &lt;br&gt;
-      IT SHOULD SAY LOOK AT THIS &lt;/h2&gt;
-    &lt;/section&gt;
-		
-    &lt;section class=&quot;row bigtoppadding&quot;&gt;
-      &lt;!-- method divided into two six containers --&gt;
-      &lt;div class=&quot;six columns&quot;&gt;
-      
-        &lt;!-- method 1 --&gt;
-        &lt;div class=&quot;method-field&quot;&gt;
-          &lt;div class=&quot;two columns&quot;&gt;
-            &lt;span class=&quot;method-number&quot;&gt;01&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;!-- method detail --&gt;
-          &lt;div class=&quot;ten columns method-detail&quot;&gt;
-            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
-            &lt;p&gt;
-              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;!-- method 2 --&gt;
-        &lt;div class=&quot;method-field&quot;&gt;
-          &lt;div class=&quot;two columns&quot;&gt;
-            &lt;span class=&quot;method-number&quot;&gt;02&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;!-- method detail --&gt;
-          &lt;div class=&quot;ten columns method-detail&quot;&gt;
-            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
-            &lt;p&gt;
-              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;!-- method 3 --&gt;
-        &lt;div class=&quot;method-field&quot;&gt;
-          &lt;div class=&quot;two columns&quot;&gt;
-            &lt;span class=&quot;method-number&quot;&gt;03&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;!-- method detail --&gt;
-          &lt;div class=&quot;ten columns method-detail&quot;&gt;
-            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
-            &lt;p&gt;
-              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;!-- method 4 --&gt;
-        &lt;div class=&quot;method-field&quot;&gt;
-          &lt;div class=&quot;two columns&quot;&gt;
-            &lt;span class=&quot;method-number&quot;&gt;04&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;!-- method detail --&gt;
-          &lt;div class=&quot;ten columns method-detail&quot;&gt;
-            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
-            &lt;p&gt;
-              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;!-- method 5 --&gt;
-        &lt;div class=&quot;method-field&quot;&gt;
-          &lt;div class=&quot;two columns&quot;&gt;
-            &lt;span class=&quot;method-number&quot;&gt;05&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;!-- method detail --&gt;
-          &lt;div class=&quot;ten columns method-detail&quot;&gt;
-            &lt;h5&gt;DISCUSS IDEAS&lt;/h5&gt;
-            &lt;p&gt;
-              At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        
-      &lt;/div&gt;	
-    &lt;/section&gt;
-    
+&lt;div class=&quot;widget_flickr&quot;&gt;
+  &lt;div class=&quot;flickr_widget_wrapper&quot;&gt;&lt;script src=&quot;http://www.flickr.com/badge_code_v2.gne?count=8&amp;amp;display=latest&amp;amp;size=s&amp;amp;layout=x&amp;amp;source=user&amp;amp;user=91205275@N03&quot;&gt;&lt;/script&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-<h4>Video Embed</h4>
-<img src="images/Oyster-video-embed.png" width="800px"><br/><br/>
+<h4>Google Maps</h4>
+<pre>&lt;div class=&quot;google-maps&quot;&gt;&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d193572.00379171!2d-73.97319698171047!3d40.70563080000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1414273731552&quot; width=&quot;1170&quot; height=&quot;400&quot; frameborder=&quot;0&quot; style=&quot;border:0&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;</pre>
+
+<h4>Social Icon List</h4>
 <pre>
-&lt;div class=&quot;grey&quot;&gt;
-  &lt;section class=&quot;row&quot;&gt;
-  
-    &lt;!-- left side --&gt;
-    &lt;div class=&quot;six columns&quot;&gt;
-      &lt;h2 class=&quot;light&quot;&gt;INTRINSIC VIDEO &lt;span class=&quot;s-bold&quot;&gt;EMBEDDING&lt;/span&gt;&lt;/h2&gt;
-      &lt;p class=&quot;smallbottompadding&quot;&gt;
-        At this point I can no longer avoid giving a first, provisional statement of my own hypothesis concerning the origin of the &acirc;��bad conscience&acirc;��: it may sound rather strange and needs to be pondered, lived with, and slept on for a long time.
-      &lt;/p&gt;
-    &lt;/div&gt;
-    
-    &lt;!-- right side --&gt;
-    &lt;div class=&quot;six columns&quot;&gt;
-      &lt;!-- always embed video as below --&gt;
-      &lt;article class=&quot;vimeo video&quot;&gt; 
-        &lt;iframe src=&quot;http://player.vimeo.com/video/55068714&quot;&gt;
-        &lt;/iframe&gt;
-      &lt;/article&gt;
-    &lt;/div&gt;
-    
-  &lt;/section&gt;
-&lt;/div&gt;
+&lt;div class=&quot;socials_wrapper&quot;&gt;
+	&lt;ul class=&quot;socials_list&quot;&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_dribbble&quot; target=&quot;_blank&quot; href=&quot;http://dribbble.com/&quot; title=&quot;Dribbble&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_gplus&quot; target=&quot;_blank&quot; href=&quot;https://plus.google.com/&quot; title=&quot;Google+&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_vimeo&quot; target=&quot;_blank&quot; href=&quot;https://vimeo.com/&quot; title=&quot;Vimeo&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_pinterest&quot; target=&quot;_blank&quot; href=&quot;http://pinterest.com&quot; title=&quot;Pinterest&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_facebook&quot; target=&quot;_blank&quot; href=&quot;http://facebook.com&quot; title=&quot;Facebook&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_twitter&quot; target=&quot;_blank&quot; href=&quot;http://twitter.com&quot; title=&quot;Twitter&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a class=&quot;ico_social_instagram&quot; target=&quot;_blank&quot; href=&quot;http://instagram.com&quot; title=&quot;Instagram&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;		
 </pre>
 
-<h4>Footer Block</h4>
-<img src="images/Oyster-footer.png" width="800px"><br/><br/>
-<pre>
-&lt;!-- section heading --&gt;
-&lt;section class=&quot;row heading&quot;&gt;
-&lt;h4&gt;COME FIND ME&lt;/h4&gt;
-&lt;h5 class=&quot;eight columns centered grey-text&quot;&gt;I am usually cooking something up at one of these social networks. Lets be friends.&lt;/h5&gt;
-&lt;/section&gt;
+<h2>Font Awesome</h2>
+<p>Oyster includes Font Awesome which you can use in any of your node/block content. Refer to the full icon list <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">here</a> which includes example markup.</p>
 
-&lt;!-- social media icons --&gt;
-&lt;section class=&quot;row&quot;&gt;
-  &lt;ul class=&quot;ring-list&quot;&gt;
-	
-    &lt;!-- link to phone info modal --&gt;
-    &lt;li class=&quot;fade&quot;&gt;
-    &lt;a href=&quot;#&quot; class=&quot;switch&quot; gumby-trigger=&quot;#phone-info&quot;&gt;&lt;i class=&quot;fa fa-phone&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-	
-    &lt;!-- add social media links here --&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-dribbble&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/section&gt;
-
-&lt;!-- copyright --&gt;
-&lt;section class=&quot;row copyright&quot;&gt;
-  &lt;p class=&quot;grey-text&quot;&gt;
-    &Acirc;&copy; Oyster Template 2014. All rights reserved&lt;br&gt;
-    Template by Refaktor.
-  &lt;/p&gt;
-&lt;/section&gt;	
-</pre>
 <h2>Theme Settings</h2>
-<img src="images/Oyster-settings.png" width="1000px"><br/><br/>
+<img src="images/oyster_settings.png" width="1000px"><br/><br/>
 <p>The Oyster theme settings can be accessed via /admin/appearance/settings/ and then clicking on the name of your active theme. There are four sections, including the standard Drupal settings. Go through each tab and configure the settings to your liking.</p>
 
 <h2>Block Regions</h2>
-<p>Oyster features 10 block regions where you can add your blocks. Visit yourdomain.com/admin/structure/block to add your own content to the defined block regions. Press "Add Block" to create a new custom blog, or select an existing block from the Disabled list below the defined block regions.</p>
+<p>Oyster features 13 block regions where you can add your blocks. Visit yourdomain.com/admin/structure/block to add your own content to the defined block regions. Press "Add Block" to create a new custom blog, or select an existing block from the Disabled list below the defined block regions.</p>
 
 <h2>Thank You</h2>
 <p>Thank you very much for purchasing the Oyster Responsive Drupal 7 theme. Once again if you have any issues or feedback please connect via the <a href="http://themeforest.net/user/refaktor#from" target="_blank">ThemeForest author page</a>. Enjoy using Oyster!</p>
