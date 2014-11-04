@@ -56,8 +56,6 @@
   </div>
 </header>
 <?php print render($page['fullscreen']); ?>
-<?php print render($page['before_content']); ?>
-
 <?php if (!render($page['fullscreen'])): ?>
 <div class="main_wrapper">
   <?php if ($page['left_sidebar'] || $page['right_sidebar']): ?><div class="bg_sidebar <?php if ($page['left_sidebar']) { print "is_left-sidebar"; }?> <?php if ($page['right_sidebar']) { print "is_right-sidebar";} ?>"></div><?php endif; ?>  
@@ -107,11 +105,39 @@
       </div>
     </div>
   </div>
-</div>    
+</div>  
+<?php print render($page['after_content']); ?>  
 <?php endif; ?>
-<?php if (render($page['footer_bottom_left']) || render($page['footer_bottom_right'])): ?>          
+<?php if (render($page['footer_bottom_left']) || render($page['footer_bottom_right']) || render($page['footer_1']) || render($page['footer_2']) || render($page['footer_3']) || render($page['footer_4'])): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
+    
+    <?php if (render($page['footer_1']) || render($page['footer_2']) || render($page['footer_3']) || render($page['footer_4'])): ?>   
+    <div class="row">
+      <?php if (render($page['footer_1'])): ?>
+      <div class="span3">
+        <?php print render($page['footer_1']); ?> 
+      </div>
+      <?php endif; ?>
+      <?php if (render($page['footer_2'])): ?>
+      <div class="span3">
+        <?php print render($page['footer_2']); ?> 
+      </div>
+      <?php endif; ?>
+      <?php if (render($page['footer_3'])): ?>
+      <div class="span3">
+        <?php print render($page['footer_3']); ?> 
+      </div>
+      <?php endif; ?>
+      <?php if (render($page['footer_4'])): ?>
+      <div class="span3">
+        <?php print render($page['footer_4']); ?> 
+      </div>
+      <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    
+    <?php if (render($page['footer_bottom_left']) || render($page['footer_bottom_right'])): ?>   
     <div class="row">
       <?php if (render($page['footer_bottom_left'])): ?>
       <div class="span6">
@@ -124,6 +150,7 @@
       </div>
       <?php endif; ?>
     </div>
+    <?php endif; ?>
   </div>
 </footer>    
 <?php endif; ?>

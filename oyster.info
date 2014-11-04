@@ -23,7 +23,6 @@ regions[header_branding] = Header Branding
 regions[header_menu] = Header Menu
 regions[header_bottom] = Header Bottom
 regions[fullscreen] = Fullscreen
-regions[before_content] = Before Content
 regions[content] = Content
 regions[right_sidebar] = Right Sidebar
 regions[left_sidebar] = Left Sidebar
