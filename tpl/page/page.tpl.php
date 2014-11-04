@@ -44,12 +44,16 @@
         </div>
         <?php endif; ?>
         
+        <?php if (theme_get_setting('header_search') == '1'): ?>
         <div class="search_fadder"></div>
         <div class="header_search">
           <?php $block = module_invoke('search', 'block_view', 'search'); print render($block); ?>
-	      </div>                
-      </nav>            
+	      </div>  
+	      <?php endif; ?>              
+      </nav>     
+      <?php if (theme_get_setting('header_search') == '1'): ?>       
       <a class="search_toggler" href="#"></a>
+      <?php endif; ?>
     </div>
     <div class="clear"></div>
   

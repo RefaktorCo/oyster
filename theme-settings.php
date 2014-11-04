@@ -49,11 +49,18 @@ function oyster_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('General'),
   );
   
-    // Ajax Loader
+    // Sticky Header
     $form['options']['general']['sticky_header'] = array(
       '#type' => 'checkbox',
       '#title' => t('Sticky Header'),
       '#default_value' => theme_get_setting('sticky_header'),
+    );
+    
+    // Header Search
+    $form['options']['general']['header_search'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Header Search'),
+      '#default_value' => theme_get_setting('header_search'),
     );
                           
   // Post Meta

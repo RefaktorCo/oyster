@@ -36,6 +36,7 @@ regions[footer_bottom_right]  = Footer Bottom Right
 
 ; Define theme setting defaults.
 settings[sticky_header] = 1
+settings[header_search] = 1
 
 settings[portfolio_meta_author] = 1
 settings[portfolio_meta_date] = 1
