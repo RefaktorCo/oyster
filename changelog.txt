@@ -1,2 +1,6 @@
+1.0.1 (11/15/14)
+  *Fixed a PHP 5.3 bug related to statistics_get() in several template files.
+  *Fixed undefined index error for portfolio nodes with empty category field.
+
 1.0 (11/05/14)
   *Initial release.

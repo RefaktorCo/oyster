@@ -55,7 +55,7 @@
       <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 	    <div class="block_likes">
 	      <?php if (module_exists('statistics')): ?>
-	      <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php print statistics_get($nid)['totalcount'] +1; ?></span></div>
+	      <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php $var = statistics_get($nid); print ($var['totalcount']) +1; ?></span></div>
 	      <?php endif; ?>
 	      <?php if (render($content['field_like'])): ?><?php print render($content['field_like']); ?><?php endif; ?>	   
 	    </div> 

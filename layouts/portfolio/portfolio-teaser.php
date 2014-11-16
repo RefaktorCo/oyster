@@ -33,7 +33,7 @@
           <?php if ( theme_get_setting('portfolio_meta_author') == '1' ) : ?> 
           <span><?php print t('by '); print $name; ?></span>
           <?php endif; ?>
-          <?php if ($content['field_portfolio_category']): ?>
+          <?php if (render($content['field_portfolio_category'])): ?>
             <span><?php print t('in'); ?> <?php print render($content['field_portfolio_category']); ?></span>
           <?php endif; ?>  
           <?php if ( theme_get_setting('portfolio_meta_comments') == '1' ) : ?>
