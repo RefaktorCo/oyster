@@ -208,6 +208,10 @@ footer.fullwidth .container {
 	display: none;
 }
 
+.form-item-subject {
+	clear: both;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (max-width: 760px) and (min-width: 420px) {
