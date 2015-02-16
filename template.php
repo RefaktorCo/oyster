@@ -440,6 +440,9 @@ function oyster_field($variables) {
  * Theme node pagination function().
  */
 function oyster_node_pagination($node, $mode = 'n') {
+	if (!$node->status) {
+    return NULL;
+  }
   $query = new EntityFieldQuery();
 	$query
     ->entityCondition('entity_type', 'node')

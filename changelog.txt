@@ -1,3 +1,8 @@
+1.0.2 (02/16/15)
+  *Updated Drupal core in demo install.
+  *Modified pagination function to prevent infinite loops.
+  *Minor style/layout tweaks.
+
 1.0.1 (11/15/14)
   *Fixed a PHP 5.3 bug related to statistics_get() in several template files.
   *Fixed undefined index error for portfolio nodes with empty category field.
