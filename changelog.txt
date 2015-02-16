@@ -1,6 +1,7 @@
 1.0.2 (02/16/15)
   *Updated Drupal core in demo install.
   *Modified pagination function to prevent infinite loops.
+  *General fixes/improvements.
   *Minor style/layout tweaks.
 
 1.0.1 (11/15/14)
