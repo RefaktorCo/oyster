@@ -64,7 +64,9 @@ jQuery(document).ready(function ($) {
 	    }
 		
 		// prettyPhoto
-		jQuery("a[rel^='prettyPhoto'], .prettyPhoto").prettyPhoto();	
+		jQuery("a[rel^='prettyPhoto'], .prettyPhoto").prettyPhoto({
+			deeplinking: true
+		});	
 		
 		jQuery('a[data-rel]').each(function() {
 			$(this).attr('rel', $(this).data('rel'));

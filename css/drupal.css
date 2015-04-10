@@ -217,11 +217,13 @@ footer.fullwidth .container {
 @media only screen and (max-width: 760px) and (min-width: 420px) {
 	.fullwidth {
 	  width: 100%;
+	  margin-top: 0;
 	}
 }
 
 @media only screen and (max-width: 420px) {
 	.fullwidth {
 	  width: 100%;
+	  margin-top: 0;
 	}
 }

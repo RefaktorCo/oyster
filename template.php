@@ -93,7 +93,7 @@ function oyster_preprocess_html(&$vars){
   $font_awesome = array(
     '#tag' => 'link', 
     '#attributes' => array( 
-      'href' => '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 
+      'href' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', 
       'rel' => 'stylesheet',
       'type' => 'text/css',
       'media' => 'screen',
