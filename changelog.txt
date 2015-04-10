@@ -1,3 +1,10 @@
+1.0.3 (04/10/15)
+  *Updated Drupal core in demo install.
+  *Fixed permissions error in Oyster modules.
+  *Fixed some responsive issues with fullwidth pages.
+  *Enabled prettyPhoto deep linking by default.
+  *Updated FontAwesome to latest version.
+
 1.0.2 (02/16/15)
   *Updated Drupal core in demo install.
   *Modified pagination function to prevent infinite loops.
