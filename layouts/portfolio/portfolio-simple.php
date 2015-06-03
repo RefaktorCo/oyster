@@ -85,7 +85,7 @@
      
       <?php if (render($content['field_like']) || module_exists('statistics')): ?> 
 		  <div class="block_likes">
-		    <?php if (module_exists('statistics')): ?>
+		    <?php if (module_exists('statistics') && user_access("view post access counter")): ?>
 		    <div class="post-views"><i class="stand_icon icon-eye"></i> <span><?php $var = statistics_get($nid); print ($var['totalcount']) +1; ?></span></div>
 		    <?php endif; ?>
 		    <?php if (render($content['field_like'])): ?><?php print render($content['field_like']); ?><?php endif; ?>																			
@@ -99,7 +99,7 @@
 	  <div class="blogpost_user_meta">
 			<div class="author-ava"><?php print $user_picture; ?></div>
 			<div class="author-name"><h6><?php print t('About the Author:'); ?> <?php print $name; ?></h6></div>
-			<?php if (isset(user_load($uid)->field_author_info)): ?>
+			<?php if (isset(user_load($uid)->field_author_info['und'])): ?>
 			<div class="author-description"><?php print user_load($uid)->field_author_info['und'][0]['value']; ?></div>
 			<?php endif; ?>
 			<div class="clear"></div>
