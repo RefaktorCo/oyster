@@ -30,6 +30,21 @@ function oyster_preprocess_username(&$vars) {
 }
 
 /**
+ * Modify theme_html_head_alter()
+ */
+function oyster_html_head_alter(&$head_elements) {
+	unset($head_elements['system_meta_generator']);
+	foreach ($head_elements as $key => $element) {
+		if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'canonical') {
+		  unset($head_elements[$key]);
+		}
+		if (isset($element['#attributes']['rel']) && $element['#attributes']['rel'] == 'shortlink') {
+		  unset($head_elements[$key]);
+		}
+  }
+}
+
+/**
  * Define some variables for use in theme templates.
  */
 function oyster_process_page(&$variables) {	

@@ -1,3 +1,8 @@
+1.0.4 (06/18/15)
+  *Updated prettyPhoto to 3.1.6.
+  *Updated Drupal Core and several modules in full install.
+  *General tweaks/bug fixes.
+
 1.0.3 (04/10/15)
   *Updated Drupal core in demo install.
   *Fixed permissions error in Oyster modules.

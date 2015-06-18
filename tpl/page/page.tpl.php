@@ -60,8 +60,8 @@
   </div>
 </header>
 <?php print render($page['fullscreen']); ?>
-<?php if (!render($page['fullscreen'])): ?>
-<div class="main_wrapper">
+
+<div class="main_wrapper <?php if (render($page['fullscreen'])){ print "hidden"; } ?>">
   <?php if ($page['left_sidebar'] || $page['right_sidebar']): ?><div class="bg_sidebar <?php if ($page['left_sidebar']) { print "is_left-sidebar"; }?> <?php if ($page['right_sidebar']) { print "is_right-sidebar";} ?>"></div><?php endif; ?>  
   <div class="content_wrapper">
     <div class="container main-container">
@@ -111,7 +111,7 @@
   </div>
 </div>  
 <?php print render($page['after_content']); ?>  
-<?php endif; ?>
+
 <?php if (render($page['footer_bottom_left']) || render($page['footer_bottom_right']) || render($page['footer_1']) || render($page['footer_2']) || render($page['footer_3']) || render($page['footer_4'])): ?>          
 <footer><!-- .main-wrapper -->
   <div class="footer_wrapper container">
